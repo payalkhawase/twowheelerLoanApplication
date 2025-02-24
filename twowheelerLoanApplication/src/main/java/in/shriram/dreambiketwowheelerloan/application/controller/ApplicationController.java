@@ -12,4 +12,8 @@ public class ApplicationController {
 
 	@Autowired
 	ApplicationServiceI asi;
+	
+	
+	
+	
 }
