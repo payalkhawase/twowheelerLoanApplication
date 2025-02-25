@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class AllPersonalDocs {
+public class AllPersonalDocuments{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

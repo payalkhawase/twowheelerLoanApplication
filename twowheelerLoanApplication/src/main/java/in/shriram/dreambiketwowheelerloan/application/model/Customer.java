@@ -28,15 +28,15 @@ public class Customer {
 	private String loanStatus="Submit";
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private AllPersonalDocs personalDoc;
+	private AllPersonalDocuments personalDoc;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private DependentInformation depInfo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerAddress custAddr;
+	
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private cibilscore cibil;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private cibilscore cibil;
- 
 }
