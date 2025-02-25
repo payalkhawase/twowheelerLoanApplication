@@ -42,4 +42,7 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private AccountDetails acdetails;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private AccountDetails accountdetails;
+
 }

@@ -1,5 +1,7 @@
 package in.shriram.dreambiketwowheelerloan.application.ServiceImpl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +22,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 		Customer c= ar.save(customer);
 		return c;
+	}
+
+	@Override
+	public List getAllCustomerDataSubmit() {
+		// TODO Auto-generated method stub
+		return ar.findByLoanStatus("Submit");
 	}
 
 	
