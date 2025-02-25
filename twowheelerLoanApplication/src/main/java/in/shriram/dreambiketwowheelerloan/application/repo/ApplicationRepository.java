@@ -8,4 +8,6 @@ import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 @Repository
 public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
+	
+
 }

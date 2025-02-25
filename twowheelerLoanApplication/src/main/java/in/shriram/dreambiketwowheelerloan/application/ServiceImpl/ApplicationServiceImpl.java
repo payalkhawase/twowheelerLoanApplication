@@ -14,8 +14,6 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	@Autowired
 	ApplicationRepository ar;
 	
-//	@Autowired
-//	DependentInformationRepo dinfo;
 
 	@Override
 	public Customer addCustomer(Customer customer) {
@@ -23,6 +21,26 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		Customer c= ar.save(customer);
 		return c;
 	}
+
+	
+
+	@Override
+	public void deleteCustomer(int customerId) {
+		
+		ar.deleteById(customerId);
+	}
+
+
+
+	@Override
+	public Customer updateCustomer(Customer customer) {
+		Customer cu=ar.save(customer);
+		return cu;
+	}
+
+
+
+	
 
 	
 }
