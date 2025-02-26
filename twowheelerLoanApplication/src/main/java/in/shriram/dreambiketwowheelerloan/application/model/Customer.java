@@ -20,7 +20,7 @@ public class Customer {
 	private String customerDateOfBirth;
 	private int customerAge;
 	private String customerGender;
-	private String customerEmail;
+	private String customerEmail; 
 	private double customerMobileNumber;
 	private double customerAdditionalMobileNumber;
 	private double customerAmountPaidForHome;

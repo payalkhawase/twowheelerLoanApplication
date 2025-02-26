@@ -7,7 +7,7 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
+@Entity 
 public class Cibilscore {
 	@Id	
 	private int cibilId; 
