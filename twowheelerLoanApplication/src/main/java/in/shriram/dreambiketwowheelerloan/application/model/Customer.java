@@ -9,7 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
-@Entity
+@Entity 
 @Data
 public class Customer {
 
@@ -21,7 +21,7 @@ public class Customer {
 	private int customerAge;
 	private String customerGender;
 	private String customerEmail;
-	private double customerMobileNumber;
+	private String customerMobileNumber;
 	private double customerAdditionalMobileNumber;
 	private double customerAmountPaidForHome;
 	private double customerTotalLoanRequired;
@@ -36,11 +36,10 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerAddress custAddr;
 	
-//	@OneToOne(cascade = CascadeType.ALL)
-//	private cibilscore cibil;
+	@OneToOne(cascade = CascadeType.ALL)
+	private Cibilscore cibil;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AccountDetails acdetails;
 
-	
 }
