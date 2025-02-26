@@ -27,6 +27,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
+import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 import jakarta.persistence.Entity;
 
