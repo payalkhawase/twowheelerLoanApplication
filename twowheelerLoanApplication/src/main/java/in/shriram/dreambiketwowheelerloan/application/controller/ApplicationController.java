@@ -41,7 +41,7 @@ public class ApplicationController {
 	@Autowired
 	RestTemplate rt;
 	
-	@Autowired
+	@Autowired 
 	ObjectMapper om;
 	
 	@PostMapping("/addCustomer/{CustomerId}")
