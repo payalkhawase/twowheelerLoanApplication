@@ -17,5 +17,7 @@ public interface ApplicationServiceI {
 
 	public List getAllCustomerDataSubmit();
 
+	public Customer getcustomer(int customerId);
+
 
 }
