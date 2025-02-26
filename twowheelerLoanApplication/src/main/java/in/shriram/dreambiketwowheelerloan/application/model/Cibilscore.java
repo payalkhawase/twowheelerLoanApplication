@@ -6,14 +6,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import lombok.Data;
 
-@Entity
 @Data
+@Entity
 public class Cibilscore {
-
-	@Id
-	private int cibilId;
+	@Id	
+	private int cibilId; 
 	private int cibilScore;
-	private Date cibilscoredDateTime = new Date();
+	private Date cibilscoredDateTime;
 	private String status;
 	private String cibilRemark;
 }

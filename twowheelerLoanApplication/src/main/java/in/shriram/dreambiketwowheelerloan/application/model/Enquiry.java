@@ -26,5 +26,4 @@ public class Enquiry {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private Cibilscore cb;
-
 }
