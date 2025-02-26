@@ -17,7 +17,7 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	ApplicationRepository ar;
 	
 //	@Autowired
-//	DependentInformationRepo dinfo;
+//	DependentInformationRepo dinfo; 
 
 	@Override
 	public Customer addCustomer(Customer customer) {
