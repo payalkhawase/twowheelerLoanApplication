@@ -2,15 +2,15 @@ package in.shriram.dreambiketwowheelerloan.application.model;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
-
+ 
+@Entity
 @Data
 public class Enquiry {
 
+	@Id
 	private int customerId;
 	private String firstname;
 	private String lastName;
