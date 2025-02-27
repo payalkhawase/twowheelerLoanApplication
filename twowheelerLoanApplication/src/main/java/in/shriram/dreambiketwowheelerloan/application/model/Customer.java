@@ -20,12 +20,14 @@ public class Customer {
 	private String customerDateOfBirth;
 	private int customerAge;
 	private String customerGender;
-	private String customerEmail;
 	private String customerMobileNumber;
 	private double customerAdditionalMobileNumber;
 	private double customerAmountPaidForHome;
 	private double customerTotalLoanRequired;
+	private String customerEmail;
+	private String password;
 	private String loanStatus="Submit";
+	
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
@@ -41,5 +43,21 @@ public class Customer {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AccountDetails acdetails;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private GuarantorDetails gdetails;
+ 
+	@OneToOne(cascade = CascadeType.ALL)
+	private LoanDisbursement loandisburst;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private Ledger led;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private SanctionLetter sanctionlett;
+
+	@OneToOne(cascade = CascadeType.ALL)
+	private CustomerVerification custVerification;
+
 
 }

@@ -2,15 +2,22 @@ package in.shriram.dreambiketwowheelerloan.application.controller;
 
 import java.util.List;
 
+
 import org.bouncycastle.asn1.x509.sigi.PersonalData;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.GetMapping;
+
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -18,7 +25,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+
 import org.springframework.web.client.RestTemplate;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -27,7 +36,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
+
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
+
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 import jakarta.persistence.Entity;
 
@@ -83,7 +94,7 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(info,HttpStatus.OK);
 	}
 	
-
+	
 	@PutMapping("/upadtedata")
     public ResponseEntity<Customer> updateCustomerInfo(@RequestBody Customer customer){
 		
@@ -103,7 +114,5 @@ public class ApplicationController {
 		List list = asi.getAllCustomerDataSubmit();
 		return new ResponseEntity<List>(list,HttpStatus.OK);
 	}
-
 	
-
 }
