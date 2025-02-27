@@ -106,6 +106,7 @@ public class ApplicationController {
 
 	   @GetMapping("/getCustomer/{customerId}")
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
+		   
 		Customer cu= asi.getcustomer(customerId);
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
