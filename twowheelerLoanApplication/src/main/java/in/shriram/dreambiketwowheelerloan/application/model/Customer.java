@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
 
@@ -16,10 +17,11 @@ public class Customer {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
-	private String customerName;
+	private String customerName; 
 	private String customerDateOfBirth;
 	private int customerAge;
 	private String customerGender;
+
 	private String customerMobileNumber;
 	private double customerAdditionalMobileNumber;
 	private double customerAmountPaidForHome;
@@ -38,8 +40,9 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerAddress custAddr;
 	
-	@OneToOne(cascade = CascadeType.ALL)
-	private Cibilscore cibil;
+	@OneToOne(cascade = CascadeType.MERGE ,orphanRemoval = false)
+	@JoinColumn(name = "cibilId")
+	private Cibil cb;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AccountDetails acdetails;
@@ -54,7 +57,7 @@ public class Customer {
 	private Ledger led;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private SanctionLetter sanctionlett;
+	private SanctionLetter sanctionletter;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerVerification custVerification;
