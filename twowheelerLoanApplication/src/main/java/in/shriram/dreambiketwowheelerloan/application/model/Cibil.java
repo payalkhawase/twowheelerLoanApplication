@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Entity 
-public class Cibilscore {
+public class Cibil {
 	@Id	
 	private int cibilId; 
 	private int cibilScore;
