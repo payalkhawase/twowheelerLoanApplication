@@ -25,7 +25,7 @@ public class Customer {
 	private double customerAmountPaidForHome;
 	private double customerTotalLoanRequired;
 	private String customerEmail;
-	private String password;
+	private int password = 123;
 	private String loanStatus="Submit";
 	
 	
@@ -54,7 +54,7 @@ public class Customer {
 	private Ledger led;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private SanctionLetter sanctionlett;
+	private SanctionLetter sanctionletter;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerVerification custVerification;
