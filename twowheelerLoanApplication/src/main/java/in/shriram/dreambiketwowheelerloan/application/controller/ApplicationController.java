@@ -76,7 +76,8 @@ public class ApplicationController {
 		customer.setCustomerEmail(e.getEmail());
 		customer.setCustomerMobileNumber(e.getMobileNo());
 		customer.setCustomerAdditionalMobileNumber(e.getAlternateMobno());
-		customer.setCibil(e.getCb());
+		customer.setCb(e.getCb());
+		customer.setPassword(e.getPassword());
 		
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
 		apdoc.setAddressProof(addressProof.getBytes());
@@ -92,6 +93,7 @@ public class ApplicationController {
 		Customer  info= asi.addCustomer(customer);
 		
 		return new ResponseEntity<Customer>(info,HttpStatus.OK);
+		
 	}
 	
 
