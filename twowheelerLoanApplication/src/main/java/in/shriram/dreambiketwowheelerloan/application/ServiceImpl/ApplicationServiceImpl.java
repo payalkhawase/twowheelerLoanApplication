@@ -26,9 +26,11 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	ApplicationRepository ar;
 
 	
+//	@Autowired
+//	DependentInformationRepo dinfo; 
+
 	@Autowired
 	ObjectMapper ob;
-
 
 	@Override
 	public Customer addCustomer(Customer customer) {
@@ -63,11 +65,11 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 		return ar.findById(customerId).get();
 		/*
+<<<<<<< HEAD
 		 * Optional<Customer> op=ar.findById(customerId); if(op.isPresent()) { Customer
 		 * cs=op.get(); return cs; }
 		 return null;*/
 	}
-
 	
 
 
