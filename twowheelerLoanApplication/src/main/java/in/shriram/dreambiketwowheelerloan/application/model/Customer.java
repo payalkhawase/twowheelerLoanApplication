@@ -27,7 +27,7 @@ public class Customer {
 	private double customerAmountPaidForHome;
 	private double customerTotalLoanRequired;
 	private String customerEmail;
-	private int password;
+	private String password;
 	private String loanStatus="Submit";
 	
 	
