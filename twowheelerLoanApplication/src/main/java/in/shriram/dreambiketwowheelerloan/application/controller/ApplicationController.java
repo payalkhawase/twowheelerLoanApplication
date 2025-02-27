@@ -36,7 +36,7 @@ public class ApplicationController {
 	}
 	
 
-	@PutMapping("/upadtedata")
+	@PutMapping("/updatedata")
     public ResponseEntity<Customer> updateCustomerInfo(@RequestBody Customer customer){
 		
 		Customer c= asi.updateCustomer(customer);
@@ -55,6 +55,8 @@ public class ApplicationController {
 		List list = asi.getAllCustomerDataSubmit();
 		return new ResponseEntity<List>(list,HttpStatus.OK);
 	}
+	
+	
 
 	
 

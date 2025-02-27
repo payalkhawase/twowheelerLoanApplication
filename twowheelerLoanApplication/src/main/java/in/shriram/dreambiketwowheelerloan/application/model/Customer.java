@@ -26,6 +26,7 @@ public class Customer {
 	private double customerAmountPaidForHome;
 	private double customerTotalLoanRequired;
 	private String loanStatus="Submit";
+	private double onRoadPrice;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
