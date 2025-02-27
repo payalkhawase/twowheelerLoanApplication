@@ -60,12 +60,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	@Override
 	public Customer getcustomer(int customerId) {
-		Optional<Customer> op=ar.findById(customerId);
-		if(op.isPresent()) {
-			Customer cs=op.get();
-			return cs;
-		}
-		return null;
+		
+		return ar.findById(customerId).get();
+		/*
+		 * Optional<Customer> op=ar.findById(customerId); if(op.isPresent()) { Customer
+		 * cs=op.get(); return cs; }
+		 return null;*/
 	}
 
 	

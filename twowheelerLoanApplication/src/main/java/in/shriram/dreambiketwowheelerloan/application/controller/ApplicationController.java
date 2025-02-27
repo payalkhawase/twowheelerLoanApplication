@@ -60,7 +60,7 @@ public class ApplicationController {
 			@RequestPart ("data") String jsonData,
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
-			@RequestPart ("IncomeTax") MultipartFile IncomeTax ,
+			//@RequestPart ("IncomeTax") MultipartFile IncomeTax ,
 			@RequestPart ("addharCard") MultipartFile addharCard,
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
@@ -81,7 +81,7 @@ public class ApplicationController {
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
 		apdoc.setAddressProof(addressProof.getBytes());
 		apdoc.setPanCard(panCard.getBytes());
-		apdoc.setIncomeTax(IncomeTax.getBytes());
+		//apdoc.setIncomeTax(IncomeTax.getBytes());
 		apdoc.setAddharCard(addharCard.getBytes());
 		apdoc.setPhoto(photo.getBytes());
 		apdoc.setSignature(signature.getBytes());
@@ -116,7 +116,7 @@ public class ApplicationController {
 	}
 
 
-	   @GetMapping("/getCustomer/{customerId}")
+	   @GetMapping("/getaCustomer/{customerId}")
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
