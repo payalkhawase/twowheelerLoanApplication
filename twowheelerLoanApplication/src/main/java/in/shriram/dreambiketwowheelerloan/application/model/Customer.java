@@ -42,7 +42,7 @@ public class Customer {
 	
 	@OneToOne(cascade = CascadeType.MERGE ,orphanRemoval = false)
 	@JoinColumn(name = "cibilId")
-	private Cibil cb;
+	private Cibil cibil;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AccountDetails acdetails;
