@@ -65,14 +65,11 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 		return ar.findById(customerId).get();
 		/*
-		Optional<Customer> op=ar.findById(customerId);
-		if(op.isPresent()) {
-			Customer cs=op.get();
-			return cs;
-		}
-		return null;*/
+<<<<<<< HEAD
+		 * Optional<Customer> op=ar.findById(customerId); if(op.isPresent()) { Customer
+		 * cs=op.get(); return cs; }
+		 return null;*/
 	}
-
 	
 
 
