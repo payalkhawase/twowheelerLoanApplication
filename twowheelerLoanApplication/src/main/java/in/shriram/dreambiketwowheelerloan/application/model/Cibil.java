@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-@Entity
-public class Cibilscore {
+@Entity 
+public class Cibil {
 	@Id	
 	private int cibilId; 
 	private int cibilScore;
