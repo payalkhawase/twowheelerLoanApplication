@@ -1,5 +1,7 @@
 package in.shriram.dreambiketwowheelerloan.application.model;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -12,19 +14,17 @@ public class SanctionLetter {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int sanctionId;
-	private String sanctionDate;
+	private Date sanctionDate;
 	private String applicantName;
-	private double contactDetails;
+	private String contactDetails;
 	private String producthomeEquity;
 	private double loanAmtSanctioned;
 	private String interestType;
 	private float rateOfInterest;
-	private int loanTenureInYear;
+	private int loanTenureInMonth;
 	private double monthlyEmiAmount;
 	private String modeOfPayment;
-	private String remarks;
-	private String termsCondition;
+	private double onRoadPrice;
 	private String status;
-
 
 }
