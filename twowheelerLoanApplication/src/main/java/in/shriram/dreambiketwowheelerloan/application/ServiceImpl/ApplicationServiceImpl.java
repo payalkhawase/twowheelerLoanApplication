@@ -73,6 +73,19 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		return null;*/
 	}
 
+	@Override
+	public Customer getCustomerVerified(int customerId) {
+		// TODO Auto-generated method stub
+		Customer co = new Customer();
+		co = ar.findById(customerId).get();
+		
+		if(co.getLoanStatus().equals("Verified"))
+		{
+			return co;
+		}
+		return null;
+	}
+
 	
 
 

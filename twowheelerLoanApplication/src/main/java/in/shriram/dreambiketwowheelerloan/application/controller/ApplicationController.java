@@ -60,8 +60,8 @@ public class ApplicationController {
 			@RequestPart ("data") String jsonData,
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
-			@RequestPart ("IncomeTax") MultipartFile IncomeTax ,
-			@RequestPart ("addharCard") MultipartFile addharCard,
+			/*@RequestPart ("IncomeTax") MultipartFile IncomeTax,
+			@RequestPart ("addharCard") MultipartFile addharCard,*/
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
@@ -76,17 +76,25 @@ public class ApplicationController {
 		customer.setCustomerEmail(e.getEmail());
 		customer.setCustomerMobileNumber(e.getMobileNo());
 		customer.setCustomerAdditionalMobileNumber(e.getAlternateMobno());
-		customer.setCb(e.getCb());
+		customer.setCibil(e.getCibil());
 		customer.setPassword(e.getPassword());
 		
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
+		if(!addressProof.isEmpty())
 		apdoc.setAddressProof(addressProof.getBytes());
+		if(!panCard.isEmpty())
 		apdoc.setPanCard(panCard.getBytes());
-		apdoc.setIncomeTax(IncomeTax.getBytes());
-		apdoc.setAddharCard(addharCard.getBytes());
+		//if(!IncomeTax.isEmpty())
+		//apdoc.setIncomeTax(IncomeTax.getBytes());
+		//if(!addharCard.isEmpty())
+		//apdoc.setAddharCard(addharCard.getBytes());
+		if(!photo.isEmpty())
 		apdoc.setPhoto(photo.getBytes());
+		if(!signature.isEmpty())
 		apdoc.setSignature(signature.getBytes());
+		if(!bankCheque.isEmpty())
 		apdoc.setBankCheque(bankCheque.getBytes());
+		if(!salarySlips.isEmpty())
 		apdoc.setSalarySlips(salarySlips.getBytes());
 		
 		customer.setPersonalDoc(apdoc);
@@ -118,12 +126,19 @@ public class ApplicationController {
 	}
 
 
-	   @GetMapping("/getCustomer/{customerId}")
+	@GetMapping("/getCustomer/{customerId}")
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
-
+	@GetMapping("/getCustomerVerified/{customerId}")
+	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
+		   
+		Customer cu= asi.getCustomerVerified(customerId);
+		return cu;
+	}
+	
+	
 }
