@@ -139,12 +139,17 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
+
 	@GetMapping("/getCustomerVerified/{customerId}")
+
 	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getCustomerVerified(customerId);
 		return cu;
 	}
 	
-	
+
+
+
+
 }
