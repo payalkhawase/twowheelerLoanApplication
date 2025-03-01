@@ -14,12 +14,12 @@ import lombok.Data;
 @Data
 public class Customer {
 
-	@Id
+	@Id 
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int customerId;
 	private String customerName; 
 	private String customerDateOfBirth;
-	private int customerAge;
+	private int customerAge; 
 	private String customerGender;
 
 	private String customerMobileNumber;
@@ -33,6 +33,8 @@ public class Customer {
 	private int requiredTenure;
 	private String interesType="Compound Interest";
 	
+	private int requiredTenure;
+	private double onRoadPrice;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
@@ -60,6 +62,7 @@ public class Customer {
 	private Ledger led;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "sanctionId")
 	private SanctionLetter sanctionletter;
 
 	@OneToOne(cascade = CascadeType.ALL)
