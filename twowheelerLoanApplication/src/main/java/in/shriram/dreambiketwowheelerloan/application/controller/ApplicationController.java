@@ -60,8 +60,12 @@ public class ApplicationController {
 			@RequestPart ("data") String jsonData,
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
-			/*@RequestPart ("IncomeTax") MultipartFile IncomeTax,
-			@RequestPart ("addharCard") MultipartFile addharCard,*/
+
+			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
+			@RequestPart ("addharCard") MultipartFile addharCard,
+			@RequestPart ("IncomeTax") MultipartFile IncomeTax ,
+			@RequestPart ("addharCard") MultipartFile addharCard,
+
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
@@ -84,10 +88,11 @@ public class ApplicationController {
 		apdoc.setAddressProof(addressProof.getBytes());
 		if(!panCard.isEmpty())
 		apdoc.setPanCard(panCard.getBytes());
-		//if(!IncomeTax.isEmpty())
-		//apdoc.setIncomeTax(IncomeTax.getBytes());
-		//if(!addharCard.isEmpty())
-		//apdoc.setAddharCard(addharCard.getBytes());
+    
+		if(!IncomeTax.isEmpty())
+		apdoc.setIncomeTax(IncomeTax.getBytes());
+		if(!addharCard.isEmpty())
+		apdoc.setAddharCard(addharCard.getBytes());
 		if(!photo.isEmpty())
 		apdoc.setPhoto(photo.getBytes());
 		if(!signature.isEmpty())
@@ -126,7 +131,8 @@ public class ApplicationController {
 	}
 
 
-	@GetMapping("/getCustomer/{customerId}")
+
+   @GetMapping("/getaCustomer/{customerId}")
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
