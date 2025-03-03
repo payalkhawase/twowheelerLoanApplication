@@ -28,5 +28,5 @@ public class Enquiry {
 	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Cibil cb;
+	private Cibil cibil;
 }

@@ -76,7 +76,7 @@ public class ApplicationController {
 		customer.setCustomerEmail(e.getEmail());
 		customer.setCustomerMobileNumber(e.getMobileNo());
 		customer.setCustomerAdditionalMobileNumber(e.getAlternateMobno());
-		customer.setCb(e.getCb());
+		customer.setCibil(e.getCibil());
 		customer.setPassword(e.getPassword());
 		
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
