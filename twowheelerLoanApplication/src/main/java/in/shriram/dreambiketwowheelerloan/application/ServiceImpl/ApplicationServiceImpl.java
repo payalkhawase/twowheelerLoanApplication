@@ -65,15 +65,28 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	public Customer getcustomer(int customerId) {
 		
 		return ar.findById(customerId).get();
-		/*
-		Optional<Customer> op=ar.findById(customerId);
-		if(op.isPresent()) {
-			Customer cs=op.get();
-			return cs;
+
+		
+	}
+
+	@Override
+	public Customer getCustomerVerified(int customerId) {
+		Customer co = new Customer();
+		co = ar.findById(customerId).get();
+		
+		if(co.getLoanStatus().equals("Verified"))
+		{
+			return co;
 		}
-		return null;*/
+		
+		return null;
+
+		/*
+		 * Optional<Customer> op=ar.findById(customerId); if(op.isPresent()) { Customer
+		 * cs=op.get(); return cs; }
+		 return null;*/
+
 	}
 
 
-	
 }
