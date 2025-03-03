@@ -32,9 +32,7 @@ public class Customer {
 	private double onRoadPrice;
 	private int requiredTenure;
 	private String interesType="Compound Interest";
-	
-	private int requiredTenure;
-	private double onRoadPrice;
+
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
