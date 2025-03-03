@@ -11,7 +11,6 @@ import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
 
-
 	public List findByLoanStatus(String string);
 
 
