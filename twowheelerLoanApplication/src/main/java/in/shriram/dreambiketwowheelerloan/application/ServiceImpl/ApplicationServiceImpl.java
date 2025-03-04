@@ -64,6 +64,7 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	public Customer getcustomer(int customerId) {
 		
 		return ar.findById(customerId).get();
+
 		
 	}
 
@@ -78,12 +79,15 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		}
 		
 		return null;
+
+		/*
+		 * Optional<Customer> op=ar.findById(customerId); if(op.isPresent()) { Customer
+		 * cs=op.get(); return cs; }
+		 return null;*/
+
 	}
-	
-
 
 	
 
 
-	
 }

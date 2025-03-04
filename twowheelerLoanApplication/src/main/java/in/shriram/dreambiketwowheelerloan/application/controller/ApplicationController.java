@@ -59,13 +59,21 @@ public class ApplicationController {
 		customer.setPassword(e.getPassword());
 		
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
+		if(!addressProof.isEmpty())
 		apdoc.setAddressProof(addressProof.getBytes());
+		if(!panCard.isEmpty())
 		apdoc.setPanCard(panCard.getBytes());
+        if(!incomeTax.isEmpty())
 		apdoc.setIncomeTax(incomeTax.getBytes());
+		if(!addharCard.isEmpty())
 		apdoc.setAddharCard(addharCard.getBytes());
+		if(!photo.isEmpty())
 		apdoc.setPhoto(photo.getBytes());
+		if(!signature.isEmpty())
 		apdoc.setSignature(signature.getBytes());
+		if(!bankCheque.isEmpty())
 		apdoc.setBankCheque(bankCheque.getBytes());
+		if(!salarySlips.isEmpty())
 		apdoc.setSalarySlips(salarySlips.getBytes());
 		
 		customer.setPersonalDoc(apdoc);
@@ -97,19 +105,25 @@ public class ApplicationController {
 	}
 
 
-	   @GetMapping("/getCustomer/{customerId}")
+   @GetMapping("/getaCustomer/{customerId}")
+
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
-	   @GetMapping("/getCustomerVerified/{customerId}")
+
+	@GetMapping("/getCustomerVerified/{customerId}")
+
 	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getCustomerVerified(customerId);
 		return cu;
 	}
 	
+
+
+
 
 }
