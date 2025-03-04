@@ -31,7 +31,7 @@ public class Customer {
 	private String loanStatus="Submit";
 	private double onRoadPrice;
 	private int requiredTenure;
-	private String interesType="Compound Interest";
+	private String interesType;
 	
 	
 	@OneToOne(cascade = CascadeType.ALL)
