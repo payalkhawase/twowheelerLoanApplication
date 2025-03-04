@@ -63,9 +63,7 @@ public class ApplicationController {
 
 			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
-			@RequestPart ("IncomeTax") MultipartFile IncomeTax ,
-			@RequestPart ("addharCard") MultipartFile addharCard,
-
+			
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
