@@ -77,7 +77,7 @@ public class ApplicationController {
 		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+CustomerId, Enquiry.class);
 		
 		Customer customer = om.readValue(jsonData, Customer.class);
-		
+	    customer.setCibil(e.getCibil());
 		customer.setCustomerName(e.getFirstname()+" "+e.getLastName());
 		customer.setCustomerAge(e.getAge());
 		customer.setCustomerEmail(e.getEmail());
