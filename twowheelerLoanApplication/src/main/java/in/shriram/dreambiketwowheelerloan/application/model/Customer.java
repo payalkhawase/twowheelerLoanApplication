@@ -3,6 +3,7 @@ package in.shriram.dreambiketwowheelerloan.application.model;
 
 import jakarta.persistence.CascadeType;
 
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,7 +32,10 @@ public class Customer {
 	private String loanStatus="Submit";
 	private double onRoadPrice;
 	private int requiredTenure;
+
 	private String interesType="Compound Interest";
+	
+
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;

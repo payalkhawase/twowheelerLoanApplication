@@ -3,6 +3,7 @@ package in.shriram.dreambiketwowheelerloan.application.controller;
 import java.util.List;
 
 
+
 import org.bouncycastle.asn1.x509.sigi.PersonalData;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,6 +63,7 @@ public class ApplicationController {
 			@RequestPart ("panCard") MultipartFile panCard,
             //@RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
+
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
