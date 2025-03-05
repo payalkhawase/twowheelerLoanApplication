@@ -3,8 +3,6 @@ package in.shriram.dreambiketwowheelerloan.application.controller;
 import java.util.List;
 
 
-import org.bouncycastle.asn1.x509.sigi.PersonalData;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,6 +32,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 
@@ -151,7 +150,18 @@ public class ApplicationController {
 	}
 	
 
-
+	@GetMapping("/verifyALogin/{customerEmail}/{password}")
+	public ResponseEntity<Customer> verifyALogin(@PathVariable("customerEmail") String customerEmail,
+			@PathVariable("password") String password){
+		
+			Customer cust=asi.verify(customerEmail,password);
+			if(cust!=null) 
+			return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+			
+			else 
+				throw new InvalidUserLoginException("Sorry, user not found!");
+			
+	}
 
 
 }

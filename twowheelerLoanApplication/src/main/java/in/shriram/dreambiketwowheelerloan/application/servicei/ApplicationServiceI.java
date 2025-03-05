@@ -24,6 +24,8 @@ public interface ApplicationServiceI {
 
 	public Customer getCustomerVerified(int customerId);
 
+	public Customer verify(String customerEmail, String password);
+
 	
 
 

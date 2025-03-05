@@ -14,4 +14,7 @@ public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 	public List findByLoanStatus(String string);
 
 
+	public Customer findByCustomerEmailAndPassword(String customerEmail, String password);
+
+
 }

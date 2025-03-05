@@ -33,6 +33,7 @@ public class Customer {
 	private int requiredTenure;
 	private String interesType="Compound Interest";
 	
+	
 
 	
 	@OneToOne(cascade = CascadeType.ALL)
