@@ -3,6 +3,7 @@ package in.shriram.dreambiketwowheelerloan.application.ServiceImpl;
 
 import java.io.IOException;
 
+
 import java.util.List;
 import java.util.Optional;
 
@@ -26,9 +27,11 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	ApplicationRepository ar;
 
 	
+//	@Autowired
+//	DependentInformationRepo dinfo; 
+
 	@Autowired
 	ObjectMapper ob;
-
 
 	@Override
 	public Customer addCustomer(Customer customer) {
@@ -60,20 +63,32 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	@Override
 	public Customer getcustomer(int customerId) {
-		Optional<Customer> op=ar.findById(customerId);
-		if(op.isPresent()) {
-			Customer cs=op.get();
-			return cs;
+		
+		return ar.findById(customerId).get();
+
+		
+	}
+
+	@Override
+	public Customer getCustomerVerified(int customerId) {
+		Customer co = new Customer();
+		co = ar.findById(customerId).get();
+		
+		if(co.getLoanStatus().equals("Verified"))
+		{
+			return co;
 		}
+		
 		return null;
-				
+
+		/*
+		 * Optional<Customer> op=ar.findById(customerId); if(op.isPresent()) { Customer
+		 * cs=op.get(); return cs; }
+		 return null;*/
+
 	}
 
 	
 
 
-	
-
-
-	
 }

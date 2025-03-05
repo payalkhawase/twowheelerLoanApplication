@@ -23,9 +23,9 @@ public class AllPersonalDocuments{
 	@Lob
 	@Column(length = 999999999)
 	private byte[] panCard;
-	@Lob
-	@Column(length = 999999999)
-	private byte[] IncomeTax;
+	//@Lob
+	//@Column(length = 999999999)
+	//private byte[] IncomeTax;
 	@Lob
 	@Column(length = 999999999)
 	private byte[] addharCard;

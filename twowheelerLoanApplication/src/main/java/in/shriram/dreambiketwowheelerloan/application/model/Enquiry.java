@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import lombok.Data;
+
  
 @Entity
 @Data
@@ -23,7 +24,9 @@ public class Enquiry {
 	private String pancardNo;
 	private String adharcardNo;
 	private String enquiryStatus="Pending";
+	private String password;
+	
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private Cibilscore cb;
+	private Cibil cibil;
 }

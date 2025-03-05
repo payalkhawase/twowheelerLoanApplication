@@ -22,6 +22,8 @@ public interface ApplicationServiceI {
 
 	public Customer getcustomer(int customerId);
 
+	public Customer getCustomerVerified(int customerId);
+
 	
 
 
