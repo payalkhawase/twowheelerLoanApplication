@@ -17,9 +17,9 @@ public class CustomerAddress {
 	private int customerAddressId;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private permanentAddress paddr;
+	private PermanentAddress paddr;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	private localAddress laddr;
+	private LocalAddress laddr;
 
 }
