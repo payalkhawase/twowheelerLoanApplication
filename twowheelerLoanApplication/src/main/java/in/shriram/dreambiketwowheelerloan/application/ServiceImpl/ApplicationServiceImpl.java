@@ -136,10 +136,5 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	}
 
-<<<<<<< HEAD
-=======
-	
-
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 
 }

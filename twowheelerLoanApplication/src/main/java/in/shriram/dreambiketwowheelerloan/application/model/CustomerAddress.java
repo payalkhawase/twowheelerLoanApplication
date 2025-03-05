@@ -1,5 +1,6 @@
 package in.shriram.dreambiketwowheelerloan.application.model;
 
+import in.shriram.dreambiketwowheelerloan.application.repo.PermanentAddressRepo;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

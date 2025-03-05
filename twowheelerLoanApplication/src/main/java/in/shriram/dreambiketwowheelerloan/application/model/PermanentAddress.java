@@ -9,7 +9,7 @@ import lombok.Data;
 @Entity
 @Data
 public class PermanentAddress {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int permanentAddressId;
