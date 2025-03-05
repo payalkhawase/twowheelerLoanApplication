@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class localAddress {
+public class LocalAddress {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
