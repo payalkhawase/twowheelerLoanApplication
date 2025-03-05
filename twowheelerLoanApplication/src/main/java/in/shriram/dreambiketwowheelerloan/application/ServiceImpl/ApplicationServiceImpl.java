@@ -16,10 +16,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import in.shriram.dreambiketwowheelerloan.application.model.AccountDetails;
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
+import in.shriram.dreambiketwowheelerloan.application.model.CustomerAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.DependentInformation;
+import in.shriram.dreambiketwowheelerloan.application.model.LocalAddress;
+import in.shriram.dreambiketwowheelerloan.application.model.PermanentAddress;
 import in.shriram.dreambiketwowheelerloan.application.repo.AccountDetailsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.AllPersonalDocumentsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.ApplicationRepository;
+import in.shriram.dreambiketwowheelerloan.application.repo.CustomerAddressRepo;
+import in.shriram.dreambiketwowheelerloan.application.repo.DependentInformationRepo;
+import in.shriram.dreambiketwowheelerloan.application.repo.LocalAddressRepo;
+import in.shriram.dreambiketwowheelerloan.application.repo.PermanentAddressRepo;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
 @Service
@@ -29,23 +36,52 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	ApplicationRepository ar;
 
 	
-//	@Autowired
-//	DependentInformationRepo dinfo; 
+	@Autowired
+	DependentInformationRepo dinfo; 
 
 	@Autowired
 	ObjectMapper ob;
 	
 	@Autowired
 	AccountDetailsRepo acrepo;
+	
+	@Autowired
+	CustomerAddressRepo caddrrepo;
+	
+	@Autowired
+	LocalAddressRepo laddrrepo;
+	
+	@Autowired
+	PermanentAddressRepo paddrrepo;
 
 	@Override
 	public Customer addCustomer(Customer customer) {
+		
+		
 		
 		if(!customer.getAcdetails().equals(null))
 		{
 			AccountDetails aco = acrepo.save(customer.getAcdetails());
 			customer.setAcdetails(aco);
 
+		}
+		
+		if(!customer.getCustAddr().getLaddr().equals(null) || !customer.getCustAddr().getPaddr().equals(null))
+		{
+			CustomerAddress caddr = new CustomerAddress();
+			
+			LocalAddress laddr = laddrrepo.save(customer.getCustAddr().getLaddr());
+			caddr.setLaddr(laddr);
+			
+			PermanentAddress paddr = paddrrepo.save(customer.getCustAddr().getPaddr());
+			caddr.setPaddr(paddr);
+			
+			customer.setCustAddr(caddr);
+		}
+		
+		if(!customer.getDepInfo().equals(null))
+		{
+			customer.setDepInfo(customer.getDepInfo());
 		}
 		
 		Customer c= ar.save(customer);
