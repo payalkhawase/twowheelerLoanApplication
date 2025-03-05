@@ -29,9 +29,9 @@ public class Customer {
 	private String customerEmail;
 	private String password;
 	private String loanStatus="Submit";
-	
-	private int requiredTenure;
 	private double onRoadPrice;
+	private int requiredTenure;
+	private String interesType="Compound Interest"
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;

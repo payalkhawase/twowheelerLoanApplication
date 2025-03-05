@@ -1,7 +1,6 @@
 package in.shriram.dreambiketwowheelerloan.application.model;
 
 import java.util.Date;
-
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,12 +25,14 @@ public class SanctionLetter {
 	private int loanTenureInMonth;
 	private double monthlyEmiAmount;
 	private String modeOfPayment;
-	 private double onRoadPrice;
+	private double onRoadPrice;
 	private String status;
+	
 
 	@Lob
 	@Column
 	private byte[] sanctionletterpdf; 
+
 
 
 }
