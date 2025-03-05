@@ -12,9 +12,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import in.shriram.dreambiketwowheelerloan.application.model.AccountDetails;
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.DependentInformation;
+import in.shriram.dreambiketwowheelerloan.application.model.LoanDisbursement;
+import in.shriram.dreambiketwowheelerloan.application.repo.AccountDetailsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.AllPersonalDocumentsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.ApplicationRepository;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
@@ -25,16 +28,20 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	@Autowired
 	ApplicationRepository ar;
 
+	@Autowired
+	AccountDetailsRepo adr;
 	
-//	@Autowired
-//	DependentInformationRepo dinfo; 
+	//@Autowired
+   // LoanDisbursement ld;
 
 	@Autowired
 	ObjectMapper ob;
 
 	@Override
 	public Customer addCustomer(Customer customer) {
-		
+		AccountDetails ac=adr.save(customer.getAcdetails());
+		customer.setAcdetails(ac);
+
 		Customer c= ar.save(customer);
 		return c;
 	}
