@@ -28,10 +28,7 @@ public class SanctionLetter {
 	private double onRoadPrice;
 	private String status;
 	
-<<<<<<< HEAD
-	
-=======
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
+
 
 	@Lob
 	@Column
