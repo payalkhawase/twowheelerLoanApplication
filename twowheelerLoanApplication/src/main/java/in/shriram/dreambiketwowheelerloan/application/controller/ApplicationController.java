@@ -62,7 +62,7 @@ public class ApplicationController {
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
             //@RequestPart ("IncomeTax") MultipartFile IncomeTax,
-			@RequestPart ("addharCard") MultipartFile addharCard,
+			//@RequestPart ("addharCard") MultipartFile addharCard,
 
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
@@ -89,8 +89,8 @@ public class ApplicationController {
     
 		//if(!IncomeTax.isEmpty())
 		//apdoc.setIncomeTax(IncomeTax.getBytes());
-		if(!addharCard.isEmpty())
-		apdoc.setAddharCard(addharCard.getBytes());
+		//if(!addharCard.isEmpty())
+		//apdoc.setAddharCard(addharCard.getBytes());
 		if(!photo.isEmpty())
 		apdoc.setPhoto(photo.getBytes());
 		if(!signature.isEmpty())
