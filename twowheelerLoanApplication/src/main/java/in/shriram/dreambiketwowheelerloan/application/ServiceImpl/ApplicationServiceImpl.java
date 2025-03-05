@@ -16,7 +16,10 @@ import in.shriram.dreambiketwowheelerloan.application.model.AccountDetails;
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.DependentInformation;
+<<<<<<< HEAD
 import in.shriram.dreambiketwowheelerloan.application.model.LoanDisbursement;
+=======
+>>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 import in.shriram.dreambiketwowheelerloan.application.repo.AccountDetailsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.AllPersonalDocumentsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.ApplicationRepository;
@@ -36,12 +39,26 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	@Autowired
 	ObjectMapper ob;
+	
+	@Autowired
+	AccountDetailsRepo acrepo;
 
 	@Override
 	public Customer addCustomer(Customer customer) {
+<<<<<<< HEAD
 		AccountDetails ac=adr.save(customer.getAcdetails());
 		customer.setAcdetails(ac);
 
+=======
+		
+		if(!customer.getAcdetails().equals(null))
+		{
+			AccountDetails aco = acrepo.save(customer.getAcdetails());
+			customer.setAcdetails(aco);
+
+		}
+		
+>>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 		Customer c= ar.save(customer);
 		return c;
 	}

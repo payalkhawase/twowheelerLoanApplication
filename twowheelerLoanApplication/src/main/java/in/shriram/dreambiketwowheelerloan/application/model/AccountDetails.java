@@ -20,4 +20,6 @@ public class AccountDetails {
 	private String accountHolderName;
 	private String accountStatus;
 	private long accountNumber;
+
+
 }
