@@ -1,45 +1,25 @@
 package in.shriram.dreambiketwowheelerloan.application.controller;
 
 import java.util.List;
-
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.GetMapping;
-
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-
 import org.springframework.web.client.RestTemplate;
-
 import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
-
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
-
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
-import jakarta.persistence.Entity;
 
 @RestController
 @RequestMapping("/apploan")
@@ -83,8 +63,11 @@ public class ApplicationController {
 		apdoc.setAddressProof(addressProof.getBytes());
 		if(!panCard.isEmpty())
 		apdoc.setPanCard(panCard.getBytes());
+
+        
 		if(!IncomeTax.isEmpty())
 		apdoc.setIncomeTax(IncomeTax.getBytes());
+
 		if(!addharCard.isEmpty())
 		apdoc.setAddharCard(addharCard.getBytes());
 		if(!photo.isEmpty())
@@ -125,8 +108,8 @@ public class ApplicationController {
 	}
 
 
-
    @GetMapping("/getaCustomer/{customerId}")
+
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
