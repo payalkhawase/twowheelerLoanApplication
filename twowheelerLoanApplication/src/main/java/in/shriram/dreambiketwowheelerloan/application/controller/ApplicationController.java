@@ -4,6 +4,7 @@ import java.util.List;
 
 
 
+
 import org.bouncycastle.asn1.x509.sigi.PersonalData;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
 
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
+
 import jakarta.persistence.Entity;
 
 @RestController
@@ -155,6 +157,14 @@ public class ApplicationController {
 		   
 		Customer cu= asi.getCustomerVerified(customerId);
 		return cu;
+	}
+	
+	@GetMapping("/getSanctionList/{customerId}")
+	public ResponseEntity<List> getSanctionList(@PathVariable("customerId") int customerId)
+	{
+		List list = asi.getSanctionList(customerId);
+		return new ResponseEntity<List>(list,HttpStatus.OK);
+		
 	}
 	
 

@@ -13,5 +13,9 @@ public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
 	public List findByLoanStatus(String string);
 
+	
+
+	public List findAllByCustomerIdAndLoanStatus(int customerId, String string);
+
 
 }

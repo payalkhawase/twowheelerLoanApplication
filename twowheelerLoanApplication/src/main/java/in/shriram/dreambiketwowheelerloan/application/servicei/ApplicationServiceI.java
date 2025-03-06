@@ -3,7 +3,9 @@ package in.shriram.dreambiketwowheelerloan.application.servicei;
 import java.util.List;
 
 
+
 import org.springframework.web.multipart.MultipartFile;
+
 
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 
@@ -23,6 +25,12 @@ public interface ApplicationServiceI {
 	public Customer getcustomer(int customerId);
 
 	public Customer getCustomerVerified(int customerId);
+
+	public List getSanctionList(int customerId);
+
+	
+
+	
 
 	
 
