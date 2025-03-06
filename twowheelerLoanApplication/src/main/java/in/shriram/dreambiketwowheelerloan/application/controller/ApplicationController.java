@@ -159,6 +159,7 @@ public class ApplicationController {
 		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
 		
 		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+	}
 
 	@GetMapping("/getSanctionList/{customerId}")
 	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
