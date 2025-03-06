@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Entity
 @Data
-public class permanentAddress {
+public class PermanentAddress {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

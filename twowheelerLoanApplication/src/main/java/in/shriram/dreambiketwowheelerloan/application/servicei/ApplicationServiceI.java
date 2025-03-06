@@ -24,9 +24,13 @@ public interface ApplicationServiceI {
 
 	public Customer getCustomerVerified(int customerId);
 
+
 	public Customer verify(String customerEmail, String password);
 
 	public Customer updateLoanStatus(int customerId, String loanStatus);
+
+	public Customer getSanctionList(int customerId);
+
 
 	
 
