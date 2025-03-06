@@ -134,6 +134,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	}
 
+	@Override
+	public Customer getSanctionList(int customerId) {
+		
+		return  ar.findByCustomerIdAndLoanStatus(customerId,"Sanctioned");
+	}
+
 	
 
 

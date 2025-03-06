@@ -24,6 +24,8 @@ public interface ApplicationServiceI {
 
 	public Customer getCustomerVerified(int customerId);
 
+	public Customer getSanctionList(int customerId);
+
 	
 
 

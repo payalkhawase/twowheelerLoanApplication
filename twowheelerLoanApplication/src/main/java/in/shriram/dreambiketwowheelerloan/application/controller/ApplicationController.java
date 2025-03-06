@@ -125,7 +125,12 @@ public class ApplicationController {
 		return cu;
 	}
 	
-
+	@GetMapping("/getSanctionList/{customerId}")
+	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
+	{
+		Customer list = asi.getSanctionList(customerId);
+		return new ResponseEntity<Customer>(list,HttpStatus.OK);
+	}
 
 
 
