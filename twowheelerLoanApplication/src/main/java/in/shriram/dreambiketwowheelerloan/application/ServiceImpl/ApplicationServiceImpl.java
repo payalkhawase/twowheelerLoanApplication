@@ -95,6 +95,17 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 	}
 
+	@Override
+	public Customer updateLoanStatus(int customerId, String loanStatus) {
+		Customer cust=ar.findById(customerId).get();
+		
+		cust.setLoanStatus(loanStatus);
+		
+		return ar.save(cust);
+	}
+
+	
+
 	
 
 

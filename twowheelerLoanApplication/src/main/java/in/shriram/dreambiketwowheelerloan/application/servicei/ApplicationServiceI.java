@@ -26,6 +26,8 @@ public interface ApplicationServiceI {
 
 	public Customer verify(String customerEmail, String password);
 
+	public Customer updateLoanStatus(int customerId, String loanStatus);
+
 	
 
 

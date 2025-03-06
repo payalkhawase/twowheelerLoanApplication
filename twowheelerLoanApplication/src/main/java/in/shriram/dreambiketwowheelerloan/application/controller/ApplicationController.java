@@ -10,13 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.GetMapping;
-
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -39,7 +32,6 @@ import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
 
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
-import jakarta.persistence.Entity;
 
 @RestController
 @RequestMapping("/apploan")
@@ -162,6 +154,16 @@ public class ApplicationController {
 				throw new InvalidUserLoginException("Sorry, user not found!");
 			
 	}
+	
+	@PutMapping("/updateLoanStatus/{customerId}/{loanStatus}")
+	public ResponseEntity<Customer> updateLoanStatus(@PathVariable("customerId") int customerId,
+			@PathVariable("loanStatus") String loanStatus){
+		
+		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
+		
+		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+	}
+
 
 
 }
