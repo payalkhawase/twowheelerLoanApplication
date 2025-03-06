@@ -26,7 +26,7 @@ public class SanctionLetter {
 	private String modeOfPayment;
 	private double onRoadPrice;
 	private String status;
-	
+
 
 	@Lob
 	@Column
