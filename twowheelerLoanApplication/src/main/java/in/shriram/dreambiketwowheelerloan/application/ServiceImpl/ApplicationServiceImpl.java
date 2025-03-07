@@ -1,6 +1,5 @@
 package in.shriram.dreambiketwowheelerloan.application.ServiceImpl;
 
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -131,14 +130,11 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 			return co;
 		}
 		
-		return null;
-
-		
+		return null;	
 
 	}
 
-<<<<<<< HEAD
-=======
+
 	@Override
 
 	public Customer verify(String customerEmail, String password) {
@@ -164,9 +160,5 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		return  ar.findByCustomerIdAndLoanStatus(customerId,"Sanctioned");
 	}
 
-
-	
-
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 
 }
