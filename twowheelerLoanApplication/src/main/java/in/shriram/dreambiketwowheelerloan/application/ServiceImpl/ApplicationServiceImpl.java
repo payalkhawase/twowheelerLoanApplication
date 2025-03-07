@@ -1,12 +1,9 @@
 package in.shriram.dreambiketwowheelerloan.application.ServiceImpl;
 
 
-<<<<<<< HEAD
+
 import java.io.IOException;
 
-
-=======
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -141,15 +138,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 
 	@Override
-<<<<<<< HEAD
+
 	public List getSanctionList(int customerId) {
 		return ar.findAllByCustomerIdAndLoanStatus(customerId,"Sanctioned");
 	}
 
 	
-
-	
-=======
 
 	public Customer verify(String customerEmail, String password) {
 		
@@ -169,13 +163,10 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	
 
-	public Customer getSanctionList(int customerId) {
-		
-		return  ar.findByCustomerIdAndLoanStatus(customerId,"Sanctioned");
-	}
+	
 
 
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
+
 	
 
 
