@@ -1,15 +1,9 @@
 package in.shriram.dreambiketwowheelerloan.application.controller;
 
 import java.util.List;
-<<<<<<< HEAD
-
-
-
 
 import org.bouncycastle.asn1.x509.sigi.PersonalData;
 
-=======
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +28,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
-<<<<<<< HEAD
+
 
 import jakarta.persistence.Entity;
 
