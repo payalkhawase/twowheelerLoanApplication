@@ -8,6 +8,7 @@ import org.springframework.web.multipart.MultipartFile;
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
+import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 
 
 public interface ApplicationServiceI {
@@ -27,7 +28,7 @@ public interface ApplicationServiceI {
 
 	public Customer verify(String customerEmail, String password);
 
-	public Customer updateLoanStatus(int customerId, String loanStatus);
+	public Customer updateLoanStatus(int customerId, String status);
 
 	public Customer getSanctionList(int customerId);
 

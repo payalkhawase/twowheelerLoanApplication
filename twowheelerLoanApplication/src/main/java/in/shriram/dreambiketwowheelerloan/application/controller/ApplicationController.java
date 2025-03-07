@@ -24,6 +24,7 @@ import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLogin
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
+import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
 @RestController
@@ -152,11 +153,11 @@ public class ApplicationController {
 			
 	}
 	
-	@PutMapping("/updateLoanStatus/{customerId}/{loanStatus}")
+	@PutMapping("/updateLoanStatus/{customerId}/{status}")
 	public ResponseEntity<Customer> updateLoanStatus(@PathVariable("customerId") int customerId,
-			@PathVariable("loanStatus") String loanStatus){
+			@PathVariable("status") String status){
 		
-		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
+		Customer cust=asi.updateLoanStatus(customerId,status);
 		
 		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
 	}
