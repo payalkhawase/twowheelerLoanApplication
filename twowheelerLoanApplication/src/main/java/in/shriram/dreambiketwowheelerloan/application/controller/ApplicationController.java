@@ -1,49 +1,43 @@
 package in.shriram.dreambiketwowheelerloan.application.controller;
 
 import java.util.List;
+<<<<<<< HEAD
 
 
 
 
 import org.bouncycastle.asn1.x509.sigi.PersonalData;
 
+=======
+>>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import org.springframework.web.bind.annotation.GetMapping;
-
-
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
-
 import org.springframework.web.client.RestTemplate;
-
 import org.springframework.web.multipart.MultipartFile;
-
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+
+import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
+
 
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
-
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
-
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
+<<<<<<< HEAD
 
 import jakarta.persistence.Entity;
+
 
 @RestController
 @RequestMapping("/apploan")
@@ -71,6 +65,7 @@ public class ApplicationController {
 			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
 
+
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
@@ -94,13 +89,16 @@ public class ApplicationController {
 		if(!panCard.isEmpty())
 		apdoc.setPanCard(panCard.getBytes());
 
+
     
 		//if(!IncomeTax.isEmpty())
 		//apdoc.setIncomeTax(IncomeTax.getBytes());
 		//if(!addharCard.isEmpty())
 		//apdoc.setAddharCard(addharCard.getBytes());
+
 		if(!IncomeTax.isEmpty())
 		apdoc.setIncomeTax(IncomeTax.getBytes());
+
 		if(!addharCard.isEmpty())
 		apdoc.setAddharCard(addharCard.getBytes());
 
@@ -119,6 +117,8 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(info,HttpStatus.OK);
 		
 	}
+	
+
 	
 	
 	@PutMapping("/upadtedata")
@@ -140,10 +140,12 @@ public class ApplicationController {
 		List list = asi.getAllCustomerDataSubmit();
 		return new ResponseEntity<List>(list,HttpStatus.OK);
 	}
-
+	
+	
 
 
    @GetMapping("/getaCustomer/{customerId}")
+
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
@@ -169,6 +171,32 @@ public class ApplicationController {
 	
 
 
+	@GetMapping("/verifyALogin/{customerEmail}/{password}")
+	public ResponseEntity<Customer> verifyALogin(@PathVariable("customerEmail") String customerEmail,
+			@PathVariable("password") String password){
+		
+			Customer cust=asi.verify(customerEmail,password);
+			if(cust!=null) 
+			return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+			
+			else 
+				throw new InvalidUserLoginException("Sorry, user not found!");
+			
+	}
+	
+	@PutMapping("/updateLoanStatus/{customerId}/{loanStatus}")
+	public ResponseEntity<Customer> updateLoanStatus(@PathVariable("customerId") int customerId,
+			@PathVariable("loanStatus") String loanStatus){
+		
+		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
+		
+		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+	}
 
 
 }
+
+
+
+
+
