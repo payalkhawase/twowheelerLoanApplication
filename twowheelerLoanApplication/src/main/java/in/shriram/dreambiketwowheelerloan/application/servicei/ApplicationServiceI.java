@@ -21,5 +21,19 @@ public interface ApplicationServiceI {
 
 	public Customer getCustomerVerified(int customerId);
 
+<<<<<<< HEAD
+=======
+
+	public Customer verify(String customerEmail, String password);
+
+	public Customer updateLoanStatus(int customerId, String loanStatus);
+
+	public Customer getSanctionList(int customerId);
+
+
+	
+
+
+>>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 
 }

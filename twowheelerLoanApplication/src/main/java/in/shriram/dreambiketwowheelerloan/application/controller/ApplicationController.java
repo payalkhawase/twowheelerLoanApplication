@@ -16,6 +16,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+
+import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
+
+
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
@@ -41,6 +46,9 @@ public class ApplicationController {
 			@RequestPart ("panCard") MultipartFile panCard,
 			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
+
+
+
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
@@ -86,6 +94,8 @@ public class ApplicationController {
 		
 	}
 	
+
+	
 	
 	@PutMapping("/upadtedata")
     public ResponseEntity<Customer> updateCustomerInfo(@RequestBody Customer customer){
@@ -106,6 +116,8 @@ public class ApplicationController {
 		List list = asi.getAllCustomerDataSubmit();
 		return new ResponseEntity<List>(list,HttpStatus.OK);
 	}
+	
+	
 
 
    @GetMapping("/getaCustomer/{customerId}")
@@ -126,6 +138,35 @@ public class ApplicationController {
 	}
 	
 
+
+	@GetMapping("/verifyALogin/{customerEmail}/{password}")
+	public ResponseEntity<Customer> verifyALogin(@PathVariable("customerEmail") String customerEmail,
+			@PathVariable("password") String password){
+		
+			Customer cust=asi.verify(customerEmail,password);
+			if(cust!=null) 
+			return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+			
+			else 
+				throw new InvalidUserLoginException("Sorry, user not found!");
+			
+	}
+	
+	@PutMapping("/updateLoanStatus/{customerId}/{loanStatus}")
+	public ResponseEntity<Customer> updateLoanStatus(@PathVariable("customerId") int customerId,
+			@PathVariable("loanStatus") String loanStatus){
+		
+		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
+		
+		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+
+	@GetMapping("/getSanctionList/{customerId}")
+	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
+	{
+		Customer list = asi.getSanctionList(customerId);
+		return new ResponseEntity<Customer>(list,HttpStatus.OK);
+
+	}
 
 
 

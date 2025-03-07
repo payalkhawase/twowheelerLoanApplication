@@ -137,5 +137,36 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+
+	public Customer verify(String customerEmail, String password) {
+		
+		Customer cust=ar.findByCustomerEmailAndPassword(customerEmail,password);
+		return cust;
+		
+	}
+
+	@Override
+	public Customer updateLoanStatus(int customerId, String loanStatus) {
+		Customer cust=ar.findById(customerId).get();
+		
+		cust.setLoanStatus(loanStatus);
+		
+		return ar.save(cust);
+	}
+
+	
+
+	public Customer getSanctionList(int customerId) {
+		
+		return  ar.findByCustomerIdAndLoanStatus(customerId,"Sanctioned");
+	}
+
+
+	
+
+>>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 
 }
