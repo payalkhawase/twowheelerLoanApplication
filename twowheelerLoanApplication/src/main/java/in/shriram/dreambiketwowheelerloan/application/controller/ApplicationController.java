@@ -153,11 +153,11 @@ public class ApplicationController {
 			
 	}
 	
-	@PutMapping("/updateLoanStatus/{customerId}/{status}")
+	@PutMapping("/updateLoanStatus/{customerId}/{loanStatus}")
 	public ResponseEntity<Customer> updateLoanStatus(@PathVariable("customerId") int customerId,
-			@PathVariable("status") String status){
+			@PathVariable("loanStatus") String loanStatus){
 		
-		Customer cust=asi.updateLoanStatus(customerId,status);
+		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
 		
 		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
 	}
