@@ -2,7 +2,9 @@ package in.shriram.dreambiketwowheelerloan.application.controller;
 
 import java.util.List;
 
-import org.bouncycastle.asn1.x509.sigi.PersonalData;
+import java.util.Set;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
@@ -66,8 +70,11 @@ public class ApplicationController {
 			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception{
 		
 		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+CustomerId, Enquiry.class);
-		
 		Customer customer = om.readValue(jsonData, Customer.class);
+		//Set<Customer> customers = (Set<Customer>) om.readValue(jsonData, new TypeReference<Set<Customer>>() {});
+
+
+		//Customer customer = om.readValue(jsonData, Customer.class);
 	    customer.setCibil(e.getCibil());
 		customer.setCustomerName(e.getFirstname()+" "+e.getLastName());
 		customer.setCustomerAge(e.getAge());

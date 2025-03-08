@@ -1,7 +1,10 @@
 package in.shriram.dreambiketwowheelerloan.application.model;
 
 
-import java.util.Set;
+import java.util.List;
+
+
+
 
 import jakarta.persistence.CascadeType;
 
@@ -26,12 +29,8 @@ public class Customer {
 	private String customerDateOfBirth;
 	private int customerAge; 
 	private String customerGender;
-
     private String customerMobileNumber;
-
-	
-
-	private double customerAdditionalMobileNumber;
+    private double customerAdditionalMobileNumber;
 	private double customerAmountPaidForHome;
 	private double customerTotalLoanRequired;
 	private String customerEmail;
@@ -68,7 +67,7 @@ public class Customer {
 	private LoanDisbursement loandisburst;
 	
 	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Ledger> led;
+	private List<Ledger> led;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 
