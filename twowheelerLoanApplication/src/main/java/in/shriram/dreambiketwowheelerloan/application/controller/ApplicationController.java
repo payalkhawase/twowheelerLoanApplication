@@ -31,6 +31,7 @@ import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLogin
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
+import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
 
@@ -192,8 +193,10 @@ public class ApplicationController {
 		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
 		
 		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+
 	}
 
+	
 
 }
 

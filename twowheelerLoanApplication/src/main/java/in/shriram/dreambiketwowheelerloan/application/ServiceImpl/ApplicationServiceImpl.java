@@ -15,6 +15,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.CustomerAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.LocalAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.PermanentAddress;
+import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.repo.AccountDetailsRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.ApplicationRepository;
 import in.shriram.dreambiketwowheelerloan.application.repo.CustomerAddressRepo;
@@ -154,11 +155,14 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	@Override
 	public Customer updateLoanStatus(int customerId, String loanStatus) {
+		
+		
 		Customer cust=ar.findById(customerId).get();
 		
 		cust.setLoanStatus(loanStatus);
 		
 		return ar.save(cust);
+		
 	}
 
 	
