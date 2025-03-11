@@ -136,7 +136,6 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 
 	@Override
-
 	public Customer verify(String customerEmail, String password) {
 		
 		Customer cust=ar.findByCustomerEmailAndPassword(customerEmail,password);

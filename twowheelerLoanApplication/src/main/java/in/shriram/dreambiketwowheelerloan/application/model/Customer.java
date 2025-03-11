@@ -33,7 +33,6 @@ public class Customer {
 	private String loanStatus="Submit";
 	private double onRoadPrice;
 	private int requiredTenure;
-
 	private String interesType="Compound Interest";
 
 	@OneToOne(cascade = CascadeType.ALL)
@@ -58,8 +57,8 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisburst;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<Ledger> led;
+//	@OneToMany(cascade = CascadeType.ALL)
+//	private Set<Ledger> led;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "sanctionId")

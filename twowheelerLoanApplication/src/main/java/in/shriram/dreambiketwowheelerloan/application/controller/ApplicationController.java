@@ -39,22 +39,19 @@ public class ApplicationController {
 	@Autowired 
 	ObjectMapper om;
 	 
-	@PostMapping("/addCustomer/{CustomerId}")
-	public ResponseEntity<Customer> addCustomer(@PathVariable ("CustomerId") int CustomerId,
+	@PostMapping("/addCustomer/{customerId}")
+	public ResponseEntity<Customer> addCustomer(@PathVariable ("customerId") int customerId,
 			@RequestPart ("data") String jsonData,
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
 			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
-
-
-
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
 			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception{
 		
-		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+CustomerId, Enquiry.class);
+		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+customerId, Enquiry.class);
 		
 		Customer customer = om.readValue(jsonData, Customer.class);
 		
@@ -121,8 +118,7 @@ public class ApplicationController {
 
 
    @GetMapping("/getaCustomer/{customerId}")
-
-	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
+   public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
@@ -130,8 +126,7 @@ public class ApplicationController {
 
 
 	@GetMapping("/getCustomerVerified/{customerId}")
-
-	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
+	public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getCustomerVerified(customerId);
 		return cu;
