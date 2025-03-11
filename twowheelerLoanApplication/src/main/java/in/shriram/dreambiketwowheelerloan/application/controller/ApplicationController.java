@@ -24,6 +24,7 @@ import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLogin
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
+import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
 @RestController
