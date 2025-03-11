@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import in.shriram.dreambiketwowheelerloan.application.dto.CustomerResponse;
+import in.shriram.dreambiketwowheelerloan.application.exception.InvalidFileTypeException;
+import in.shriram.dreambiketwowheelerloan.application.exception.InvalidPhotoTypeException;
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
 
 @RestControllerAdvice
@@ -22,5 +24,15 @@ public class GlobalExceptionHandler {
 	
 		return new ResponseEntity<CustomerResponse>(cr,HttpStatus.BAD_REQUEST);
 	}
+	
+	 @ExceptionHandler(InvalidFileTypeException.class)
+	 public ResponseEntity<String> handleInvalidFileTypeException(InvalidFileTypeException ex) {
+	        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+	 }
+	 
+	 @ExceptionHandler(InvalidPhotoTypeException.class)
+	 public ResponseEntity<String> handleInvalidPhotoTypeException(InvalidPhotoTypeException ex) {
+	        return new ResponseEntity<>(ex.getMessage(), HttpStatus.BAD_REQUEST);
+	 }
 
 }
