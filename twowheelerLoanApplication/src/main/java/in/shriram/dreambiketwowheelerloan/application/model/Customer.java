@@ -58,13 +58,12 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private LoanDisbursement loandisburst;
 	
-<<<<<<< HEAD
+
 //	@OneToMany(cascade = CascadeType.ALL)
 //	private Set<Ledger> led;
-=======
+
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Ledger> led;
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "sanctionId")
