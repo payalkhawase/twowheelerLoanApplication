@@ -1,5 +1,6 @@
 package in.shriram.dreambiketwowheelerloan.application.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -17,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-
+import in.shriram.dreambiketwowheelerloan.application.exception.InvalidFileTypeException;
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
 
 
@@ -39,6 +40,11 @@ public class ApplicationController {
 	
 	@Autowired 
 	ObjectMapper om;
+	
+	// Define the allowed image MIME types
+    private static final List<String> ALLOWED_IMAGE_TYPES = Arrays.asList(
+            "image/jpeg", "image/png", "image/jpg"
+    );
 	 
 	@PostMapping("/addCustomer/{CustomerId}")
 	public ResponseEntity<Customer> addCustomer(@PathVariable ("CustomerId") int CustomerId,
@@ -47,9 +53,6 @@ public class ApplicationController {
 			@RequestPart ("panCard") MultipartFile panCard,
 			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
-
-
-
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
@@ -69,24 +72,80 @@ public class ApplicationController {
 		
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
 		if(!addressProof.isEmpty())
-		apdoc.setAddressProof(addressProof.getBytes());
+		{
+			if (!addressProof.getContentType().equals("application/pdf")) {
+	            throw new InvalidFileTypeException("Only PDF files are allowed for address proof");
+	        }
+			else
+			{
+				apdoc.setAddressProof(addressProof.getBytes());
+			}
+		}
 		if(!panCard.isEmpty())
-		apdoc.setPanCard(panCard.getBytes());
-
-        
+		{	
+			if (!panCard.getContentType().equals("application/pdf")) {
+	            throw new InvalidFileTypeException("Only PDF files are allowed for Pan Card");
+	        }
+			else
+			{
+			apdoc.setPanCard(panCard.getBytes());
+			}
+		}
 		if(!IncomeTax.isEmpty())
-		apdoc.setIncomeTax(IncomeTax.getBytes());
-
+		{
+			if (!IncomeTax.getContentType().equals("application/pdf")) {
+	            throw new InvalidFileTypeException("Only PDF files are allowed for IncomeTax");
+	        }
+			else
+			{
+				apdoc.setIncomeTax(IncomeTax.getBytes());
+			}
+		}
 		if(!addharCard.isEmpty())
-		apdoc.setAddharCard(addharCard.getBytes());
+		{
+			if (!addharCard.getContentType().equals("application/pdf")) {
+	            throw new InvalidFileTypeException("Only PDF files are allowed for addhar Card");
+	        }
+			else
+			{
+				apdoc.setAddharCard(addharCard.getBytes());
+
+			}
+		}
+			
 		if(!photo.isEmpty())
-		apdoc.setPhoto(photo.getBytes());
+		{
+			if (!ALLOWED_IMAGE_TYPES.contains(photo.getContentType())) {
+	            throw new InvalidFileTypeException("Only image files (JPEG, PNG, JPG) are allowed for photo");
+	        }
+			else {
+				apdoc.setPhoto(photo.getBytes());
+			}
+		}
+		
 		if(!signature.isEmpty())
 		apdoc.setSignature(signature.getBytes());
 		if(!bankCheque.isEmpty())
-		apdoc.setBankCheque(bankCheque.getBytes());
+		{
+			if (!bankCheque.getContentType().equals("application/pdf")) {
+	            throw new InvalidFileTypeException("Only PDF files are allowed for bank Cheque");
+	        }
+			else
+			{
+				apdoc.setBankCheque(bankCheque.getBytes());
+
+			}
+		}
 		if(!salarySlips.isEmpty())
-		apdoc.setSalarySlips(salarySlips.getBytes());
+		{
+			if (!salarySlips.getContentType().equals("application/pdf")) {
+	            throw new InvalidFileTypeException("Only PDF files are allowed for salary Slips");
+	        }
+			else
+			{
+				apdoc.setSalarySlips(salarySlips.getBytes());
+			}
+		}
 		
 		customer.setPersonalDoc(apdoc);
 		Customer  info= asi.addCustomer(customer);
