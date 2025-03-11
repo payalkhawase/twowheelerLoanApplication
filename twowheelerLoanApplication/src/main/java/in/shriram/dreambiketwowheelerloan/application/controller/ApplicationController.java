@@ -145,11 +145,13 @@ public class ApplicationController {
 			@PathVariable("password") String password){
 		
 			Customer cust=asi.verify(customerEmail,password);
-			if(cust!=null) 
+			if(cust!=null) {
 			return new ResponseEntity<Customer>(cust,HttpStatus.OK);
-			
-			else 
+			}
+			else {
+				
 				throw new InvalidUserLoginException("Sorry, user not found!");
+			}
 			
 	}
 	
