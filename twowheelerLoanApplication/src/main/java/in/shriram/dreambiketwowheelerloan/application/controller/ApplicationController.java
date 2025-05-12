@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -28,6 +29,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
 import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/apploan")
 public class ApplicationController {
@@ -172,9 +174,9 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/getAllCustomerDataSubmit")
-	public ResponseEntity<List> getAllCustomerDataSubmit() {
-		List list = asi.getAllCustomerDataSubmit();
-		return new ResponseEntity<List>(list,HttpStatus.OK);
+	public ResponseEntity<List<Customer>> getAllCustomerDataSubmit() {
+		List<Customer> list = asi.getAllCustomerDataSubmit();
+		return new ResponseEntity<List<Customer>>(list,HttpStatus.OK);
 	}
 	
 	
@@ -189,11 +191,11 @@ public class ApplicationController {
 	}
 
 
-	@GetMapping("/getCustomerVerified/{customerId}")
+	@GetMapping("/getCustomerVerified")
 
-	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
+	    public List<Customer> getCustomerVerified() {
 		   
-		Customer cu= asi.getCustomerVerified(customerId);
+		List<Customer> cu= asi.getCustomerVerified();
 		return cu;
 	}
 	
@@ -231,6 +233,6 @@ public class ApplicationController {
 
 	}
 
-
+	
 
 }

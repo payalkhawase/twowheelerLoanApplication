@@ -19,11 +19,11 @@ public interface ApplicationServiceI {
 	public Customer updateCustomer(Customer customer);
 	public void deleteCustomer(int customerId);
 
-	public List getAllCustomerDataSubmit();
+	public List<Customer> getAllCustomerDataSubmit();
 
 	public Customer getcustomer(int customerId);
 
-	public Customer getCustomerVerified(int customerId);
+	public List<Customer> getCustomerVerified();
 
 
 	public Customer verify(String customerEmail, String password);
@@ -31,6 +31,8 @@ public interface ApplicationServiceI {
 	public Customer updateLoanStatus(int customerId, String loanStatus);
 
 	public Customer getSanctionList(int customerId);
+
+	
 
 
 	
