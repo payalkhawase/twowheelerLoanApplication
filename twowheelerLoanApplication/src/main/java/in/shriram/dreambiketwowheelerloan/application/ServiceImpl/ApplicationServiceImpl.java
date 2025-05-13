@@ -94,7 +94,7 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 	
 	@Override
-	public List getAllCustomerDataSubmit() {
+	public List<Customer> getAllCustomerDataSubmit() {
 		// TODO Auto-generated method stub
 		return ar.findByLoanStatus("Submit");
 	}
@@ -123,18 +123,10 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 
 	@Override
-	public Customer getCustomerVerified(int customerId) {
-		Customer co = new Customer();
-		co = ar.findById(customerId).get();
+	public List<Customer> getCustomerVerified() {
 		
-		if(co.getLoanStatus().equals("Verified"))
-		{
-			return co;
-		}
 		
-		return null;
-
-		
+		return ar.findByLoanStatus("Verified");
 
 	}
 
@@ -175,6 +167,8 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 	
 
+
+	
 
 
 	

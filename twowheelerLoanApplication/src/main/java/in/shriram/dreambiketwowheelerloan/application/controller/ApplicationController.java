@@ -28,7 +28,10 @@ import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
 
+
 import jakarta.persistence.Entity;
+
+
 
 @CrossOrigin("*")
 @RestController
@@ -195,9 +198,9 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/getAllCustomerDataSubmit")
-	public ResponseEntity<List> getAllCustomerDataSubmit() {
-		List list = asi.getAllCustomerDataSubmit();
-		return new ResponseEntity<List>(list,HttpStatus.OK);
+	public ResponseEntity<List<Customer>> getAllCustomerDataSubmit() {
+		List<Customer> list = asi.getAllCustomerDataSubmit();
+		return new ResponseEntity<List<Customer>>(list,HttpStatus.OK);
 	}
 	
 	
@@ -211,11 +214,16 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
-@GetMapping("/getCustomerVerified/{customerId}")
 
-	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
+
+
+
+	@GetMapping("/getCustomerVerified")
+
+
+	    public List<Customer> getCustomerVerified() {
 		   
-		Customer cu= asi.getCustomerVerified(customerId);
+		List<Customer> cu= asi.getCustomerVerified();
 		return cu;
 	}
 	
@@ -234,11 +242,13 @@ public class ApplicationController {
 			@PathVariable("password") String password){
 		
 			Customer cust=asi.verify(customerEmail,password);
-			if(cust!=null) 
+			if(cust!=null) {
 			return new ResponseEntity<Customer>(cust,HttpStatus.OK);
-			
-			else 
+			}
+			else {
+				
 				throw new InvalidUserLoginException("Sorry, user not found!");
+			}
 			
 	}
 	

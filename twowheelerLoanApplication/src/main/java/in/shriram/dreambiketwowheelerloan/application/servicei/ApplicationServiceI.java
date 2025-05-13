@@ -21,11 +21,11 @@ public interface ApplicationServiceI {
 	public Customer updateCustomer(Customer customer);
 	public void deleteCustomer(int customerId);
 
-	public List getAllCustomerDataSubmit();
+	public List<Customer> getAllCustomerDataSubmit();
 
 	public Customer getcustomer(int customerId);
 
-	public Customer getCustomerVerified(int customerId);
+	public List<Customer> getCustomerVerified();
 
 
 	public List getSanctionList(int customerId);
@@ -38,6 +38,8 @@ public interface ApplicationServiceI {
 
 	
 
+
+	
 
 
 	

@@ -11,7 +11,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
 
-	public List findByLoanStatus(String string);
+	public List<Customer> findByLoanStatus(String string);
 
 
 	
@@ -27,4 +27,8 @@ public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 }
