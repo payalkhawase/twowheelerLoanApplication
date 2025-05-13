@@ -180,10 +180,7 @@ public class ApplicationController {
 		
 	}
 	
-
-	
-	
-	@PutMapping("/upadtedata")
+   @PutMapping("/upadtedata")
     public ResponseEntity<Customer> updateCustomerInfo(@RequestBody Customer customer){
 		
 		Customer c= asi.updateCustomer(customer);
