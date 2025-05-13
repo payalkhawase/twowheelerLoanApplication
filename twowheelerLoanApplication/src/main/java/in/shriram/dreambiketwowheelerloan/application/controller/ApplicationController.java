@@ -211,8 +211,7 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
-
-	@GetMapping("/getCustomerVerified/{customerId}")
+@GetMapping("/getCustomerVerified/{customerId}")
 
 	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
 		   
