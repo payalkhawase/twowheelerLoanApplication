@@ -165,6 +165,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 	}
 
+	@Override
+	public List<Customer> getAllCustomer() {
+		// TODO Auto-generated method stub
+		return ar.findAll();
+	}
+
 	
 
 	

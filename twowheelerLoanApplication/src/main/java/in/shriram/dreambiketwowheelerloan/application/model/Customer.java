@@ -28,27 +28,20 @@ public class Customer {
 	private String customerDateOfBirth;
 	private int customerAge; 
 	private String customerGender;
-
     private String customerMobileNumber;
     private double customerAdditionalMobileNumber;
-	private double customerAmountPaidForHome;
-
-	
-	
-	private double customerAmountPaidForBike;
-
-	private double customerTotalLoanRequired;
+	//private double customerAmountPaidForHome;
+    private double customerAmountPaidForBike;
+    private double customerTotalLoanRequired;
 	private String customerEmail;
 	private String password;
 	private String loanStatus="Submit";
 	private double onRoadPrice;
 	private int requiredTenure;
-
-
-	private String interesType="Compound Interest";
+    private String interesType="Compound Interest";
 	
 
-	@OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
 	
 	@OneToOne(cascade = CascadeType.ALL)

@@ -34,6 +34,8 @@ public interface ApplicationServiceI {
 
 	public Customer updateLoanStatus(int customerId, String loanStatus);
 
+	public List<Customer> getAllCustomer();
+
 	
 
 
