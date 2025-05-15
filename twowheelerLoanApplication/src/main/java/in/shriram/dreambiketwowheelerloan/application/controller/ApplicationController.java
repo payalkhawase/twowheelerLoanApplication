@@ -269,6 +269,14 @@ public class ApplicationController {
 
 	}
 	
+	@GetMapping("/getSanctionedCustomers")
+	public ResponseEntity<List<Customer>> getSanctionedList()
+	{
+		List<Customer> l = asi.getSanctionedcustomer();
+		return new ResponseEntity<List<Customer>>(l,HttpStatus.OK);
+				
+	}
+	
 //	@GetMapping("/getAllCustomer")
 //	public ResponseEntity<List<Customer>> getAllCustomer()
 //	{
