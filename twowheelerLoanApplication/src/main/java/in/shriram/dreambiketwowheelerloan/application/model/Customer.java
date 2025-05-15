@@ -3,7 +3,9 @@ package in.shriram.dreambiketwowheelerloan.application.model;
 
 import java.util.List;
 
+
 import java.util.Set;
+
 
 import jakarta.persistence.CascadeType;
 
@@ -39,6 +41,7 @@ public class Customer {
 	private double onRoadPrice;
 	private int requiredTenure;
     private String interesType="Compound Interest";
+    private String  userType="CUSTOMER";
 	
 
     @OneToOne(cascade = CascadeType.ALL)

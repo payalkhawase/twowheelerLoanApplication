@@ -36,6 +36,8 @@ public interface ApplicationServiceI {
 
 	public List<Customer> getAllCustomer();
 
+	public Customer getSingleCustomerVerified(int customerId);
+
 	
 
 

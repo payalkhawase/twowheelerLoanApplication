@@ -203,10 +203,7 @@ public class ApplicationController {
 		return new ResponseEntity<List<Customer>>(list,HttpStatus.OK);
 	}
 	
-	
-
-
-   @GetMapping("/getaCustomer/{customerId}")
+	@GetMapping("/getaCustomer/{customerId}")
 
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
@@ -214,11 +211,7 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
-
-
-
-
-	@GetMapping("/getCustomerVerified")
+    @GetMapping("/getCustomerVerified")
 
 
 	    public List<Customer> getCustomerVerified() {
@@ -226,6 +219,16 @@ public class ApplicationController {
 		List<Customer> cu= asi.getCustomerVerified();
 		return cu;
 	}
+	
+	@GetMapping("/getSingleCustomerVerified/{customerId}")
+
+     public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId) {
+	   
+	Customer cu= asi.getSingleCustomerVerified(customerId);
+	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+}
+	
+	
 	
 	@GetMapping("/getSanctionList/{customerId}")
 	public ResponseEntity<List> getSanctionList(@PathVariable("customerId") int customerId)

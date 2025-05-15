@@ -13,10 +13,7 @@ public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
 	public List<Customer> findByLoanStatus(String string);
 
-
-	
-
-	public List findAllByCustomerIdAndLoanStatus(int customerId, String string);
+    public List findAllByCustomerIdAndLoanStatus(int customerId, String string);
 
 	public Customer findByCustomerIdAndLoanStatus(int customerId, String string);
 
@@ -24,11 +21,4 @@ public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 	public Customer findByCustomerEmailAndPassword(String customerEmail, String password);
 
 
-
-
-
-<<<<<<< HEAD
-=======
-
->>>>>>> branch 'main' of https://github.com/payalkhawase/twowheelerLoanApplication.git
 }

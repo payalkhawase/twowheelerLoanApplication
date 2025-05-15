@@ -163,6 +163,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		return ar.findAll();
 	}
 
+	@Override
+	public Customer getSingleCustomerVerified(int customerId) {
+		
+		return ar.findById(customerId).get();
+	}
+
 	
 
 	
