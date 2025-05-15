@@ -1,5 +1,6 @@
 package in.shriram.dreambiketwowheelerloan.application.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidFileTypeException;
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
@@ -36,9 +38,10 @@ import jakarta.persistence.Entity;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/apploan")
+@CrossOrigin("http://localhost:5173")
 public class ApplicationController {
 
-	@Autowired
+	@Autowired 
 	ApplicationServiceI asi;
 	
 	@Autowired
@@ -50,11 +53,11 @@ public class ApplicationController {
 	// Define the allowed image MIME types
     private static final List<String> ALLOWED_IMAGE_TYPES = Arrays.asList(
             "image/jpeg", "image/png", "image/jpg"
-    );
+    ); 
 	 
 	@PostMapping("/addCustomer/{CustomerId}")
 	public ResponseEntity<Customer> addCustomer(@PathVariable ("CustomerId") int CustomerId,
-			@RequestPart ("data") String jsonData,
+			@RequestPart ("data") String jsonData, 
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
 
@@ -65,7 +68,8 @@ public class ApplicationController {
             @RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
-			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception{
+			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception
+			{
 		
 		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+CustomerId, Enquiry.class);
 		Customer customer = om.readValue(jsonData, Customer.class);
@@ -277,6 +281,36 @@ public class ApplicationController {
 }
 
 
+	@GetMapping("/getSanctionList/{customerId}")
+	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
+	{
+		Customer list = asi.getSanctionList(customerId);
+		return new ResponseEntity<Customer>(list,HttpStatus.OK);
+ 
+	}
 
 
+	@GetMapping("/getVerifiedCustomers")
+	public ResponseEntity<List> getVerifiedList()
+	{
+		List l = asi.getVerifiedCustomers();
+		return new ResponseEntity<List>(l,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/getSanctionedCustomers")
+	public ResponseEntity<List> getSanctionedList()
+	{
+		List l = asi.getSanctionedList();
+		return new ResponseEntity<List>(l,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/getSingleCustomerVerified/{customerId}")
+
+    public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId) {
+	   
+	Customer cu= asi.getSingleCustomerVerified(customerId);
+	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+}
 

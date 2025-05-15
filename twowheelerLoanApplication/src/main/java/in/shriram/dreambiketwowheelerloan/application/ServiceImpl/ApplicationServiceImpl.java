@@ -34,9 +34,6 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	AccountDetailsRepo adr;
 	
 
-	//@Autowired
-   // LoanDisbursement ld;
-
 	@Autowired
 	DependentInformationRepo dinfo; 
 
@@ -175,6 +172,24 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 
 
 	
+
+	@Override
+	public List getVerifiedCustomers() {
+		// TODO Auto-generated method stub
+		return ar.findByLoanStatus("Verified");
+	}
+
+	@Override
+	public Customer getSingleCustomerVerified(int customerId) {
+		// TODO Auto-generated method stub
+		return ar.findById(customerId).get();
+	}
+
+	@Override
+	public List getSanctionedList() {
+		// TODO Auto-generated method stub
+		return ar.findByLoanStatus("Sanctioned");
+	}
 
 
 	
