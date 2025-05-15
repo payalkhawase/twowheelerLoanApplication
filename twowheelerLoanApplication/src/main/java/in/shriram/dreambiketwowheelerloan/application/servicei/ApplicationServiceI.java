@@ -3,7 +3,9 @@ package in.shriram.dreambiketwowheelerloan.application.servicei;
 import java.util.List;
 
 
+
 import org.springframework.web.multipart.MultipartFile;
+
 
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 
@@ -19,18 +21,27 @@ public interface ApplicationServiceI {
 	public Customer updateCustomer(Customer customer);
 	public void deleteCustomer(int customerId);
 
-	public List getAllCustomerDataSubmit();
+	public List<Customer> getAllCustomerDataSubmit();
 
 	public Customer getcustomer(int customerId);
 
-	public Customer getCustomerVerified(int customerId);
+	public List<Customer> getCustomerVerified();
 
+
+	public List getSanctionList(int customerId);
 
 	public Customer verify(String customerEmail, String password);
 
 	public Customer updateLoanStatus(int customerId, String loanStatus);
 
-	public Customer getSanctionList(int customerId);
+	public List<Customer> getAllCustomer();
+
+	public Customer getSingleCustomerVerified(int customerId);
+
+	
+
+
+	
 
 	public List getVerifiedCustomers();
 
