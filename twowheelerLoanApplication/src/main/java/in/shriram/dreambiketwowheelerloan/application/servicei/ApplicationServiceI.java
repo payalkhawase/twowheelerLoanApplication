@@ -32,6 +32,12 @@ public interface ApplicationServiceI {
 
 	public Customer getSanctionList(int customerId);
 
+	public List getVerifiedCustomers();
+
+	public Customer getSingleCustomerVerified(int customerId);
+
+	public List getSanctionedList();
+
 
 	
 

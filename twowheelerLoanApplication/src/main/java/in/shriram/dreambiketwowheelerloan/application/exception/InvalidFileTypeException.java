@@ -5,3 +5,4 @@ public class InvalidFileTypeException extends RuntimeException {
         super(message);
     }
 }
+ 

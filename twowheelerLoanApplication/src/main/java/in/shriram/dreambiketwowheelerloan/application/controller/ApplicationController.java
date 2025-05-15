@@ -1,10 +1,12 @@
 package in.shriram.dreambiketwowheelerloan.application.controller;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidFileTypeException;
@@ -30,9 +33,10 @@ import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServic
 
 @RestController
 @RequestMapping("/apploan")
+@CrossOrigin("http://localhost:5173")
 public class ApplicationController {
 
-	@Autowired
+	@Autowired 
 	ApplicationServiceI asi;
 	
 	@Autowired
@@ -44,11 +48,11 @@ public class ApplicationController {
 	// Define the allowed image MIME types
     private static final List<String> ALLOWED_IMAGE_TYPES = Arrays.asList(
             "image/jpeg", "image/png", "image/jpg"
-    );
+    ); 
 	 
 	@PostMapping("/addCustomer/{CustomerId}")
 	public ResponseEntity<Customer> addCustomer(@PathVariable ("CustomerId") int CustomerId,
-			@RequestPart ("data") String jsonData,
+			@RequestPart ("data") String jsonData, 
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
 			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
@@ -56,7 +60,8 @@ public class ApplicationController {
 			@RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
-			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception{
+			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception
+			{
 		
 		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+CustomerId, Enquiry.class);
 		
@@ -229,6 +234,28 @@ public class ApplicationController {
 
 	}
 
+	@GetMapping("/getVerifiedCustomers")
+	public ResponseEntity<List> getVerifiedList()
+	{
+		List l = asi.getVerifiedCustomers();
+		return new ResponseEntity<List>(l,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/getSanctionedCustomers")
+	public ResponseEntity<List> getSanctionedList()
+	{
+		List l = asi.getSanctionedList();
+		return new ResponseEntity<List>(l,HttpStatus.OK);
+				
+	}
+	
+	@GetMapping("/getSingleCustomerVerified/{customerId}")
 
+    public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId) {
+	   
+	Customer cu= asi.getSingleCustomerVerified(customerId);
+	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+}
 
 }
