@@ -13,14 +13,12 @@ public interface ApplicationRepository extends JpaRepository<Customer, Integer>{
 
 	public List<Customer> findByLoanStatus(String string);
 
+    public List findAllByCustomerIdAndLoanStatus(int customerId, String string);
+
 	public Customer findByCustomerIdAndLoanStatus(int customerId, String string);
 
 
 	public Customer findByCustomerEmailAndPassword(String customerEmail, String password);
-
-
-
-
 
 
 }

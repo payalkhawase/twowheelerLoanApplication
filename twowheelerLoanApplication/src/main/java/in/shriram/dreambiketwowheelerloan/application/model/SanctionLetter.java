@@ -28,6 +28,7 @@ public class SanctionLetter {
 	private String status;
 
 
+
 	@Lob
 	@Column
 	private byte[] sanctionletterpdf; 
