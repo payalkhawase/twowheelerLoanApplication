@@ -38,7 +38,7 @@ import jakarta.persistence.Entity;
 @CrossOrigin("*")
 @RestController
 @RequestMapping("/apploan")
-@CrossOrigin("http://localhost:5173")
+//@CrossOrigin("http://localhost:5173")
 public class ApplicationController {
 
 	@Autowired 
@@ -208,29 +208,25 @@ public class ApplicationController {
 	}
 	
 	@GetMapping("/getaCustomer/{customerId}")
-
-	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
+    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
 		Customer cu= asi.getcustomer(customerId);
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
     @GetMapping("/getCustomerVerified")
-
-
-	    public List<Customer> getCustomerVerified() {
+	public List<Customer> getCustomerVerified() {
 		   
 		List<Customer> cu= asi.getCustomerVerified();
 		return cu;
 	}
 	
 	@GetMapping("/getSingleCustomerVerified/{customerId}")
-
      public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId) {
 	   
-	Customer cu= asi.getSingleCustomerVerified(customerId);
-	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
-}
+	   Customer cu= asi.getSingleCustomerVerified(customerId);
+	   return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+     }
 	
 	
 	
@@ -276,18 +272,15 @@ public class ApplicationController {
 //	 return new ResponseEntity<>(customers, HttpStatus.OK);
 //	}
 
-	
-
-}
 
 
-	@GetMapping("/getSanctionList/{customerId}")
-	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
-	{
-		Customer list = asi.getSanctionList(customerId);
-		return new ResponseEntity<Customer>(list,HttpStatus.OK);
- 
-	}
+//	@GetMapping("/getSanctionList/{customerId}")
+//	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
+//	{
+//		Customer list = asi.getSanctionList(customerId);
+//		return new ResponseEntity<Customer>(list,HttpStatus.OK);
+// 
+//	}
 
 
 	@GetMapping("/getVerifiedCustomers")
@@ -306,11 +299,11 @@ public class ApplicationController {
 				
 	}
 	
-	@GetMapping("/getSingleCustomerVerified/{customerId}")
-
-    public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId) {
-	   
-	Customer cu= asi.getSingleCustomerVerified(customerId);
-	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+//	@GetMapping("/getSingleCustomerVerified/{customerId}")
+//    public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId)
+//	{
+//	   
+//	Customer cu= asi.getSingleCustomerVerified(customerId);
+//	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+//    }
 }
-

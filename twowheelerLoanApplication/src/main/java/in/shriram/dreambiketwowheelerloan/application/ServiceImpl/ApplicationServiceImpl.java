@@ -167,23 +167,17 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 
 	
-
-	
-
-
-	
-
 	@Override
 	public List getVerifiedCustomers() {
 		// TODO Auto-generated method stub
 		return ar.findByLoanStatus("Verified");
 	}
 
-	@Override
-	public Customer getSingleCustomerVerified(int customerId) {
-		// TODO Auto-generated method stub
-		return ar.findById(customerId).get();
-	}
+//	@Override
+//	public Customer getSingleCustomerVerified(int customerId) {
+//		// TODO Auto-generated method stub
+//		return ar.findById(customerId).get();
+//	}
 
 	@Override
 	public List getSanctionedList() {
