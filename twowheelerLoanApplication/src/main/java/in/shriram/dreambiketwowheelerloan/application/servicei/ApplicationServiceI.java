@@ -38,6 +38,10 @@ public interface ApplicationServiceI {
 
 	public Customer getSingleCustomerVerified(int customerId);
 
+	public List getSanctionedList();
+
+	public List<Customer> getSanctionedcustomer();
+
 	
 
 
