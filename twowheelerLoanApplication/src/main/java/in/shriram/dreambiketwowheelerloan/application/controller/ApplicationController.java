@@ -311,7 +311,7 @@ public class ApplicationController {
 	{
 		List l = asi.getSanctionedList();
 		return new ResponseEntity<List>(l,HttpStatus.OK);
-				
+		
 	}
 	
 	@GetMapping("/getSingleCustomerVerified/{customerId}")
