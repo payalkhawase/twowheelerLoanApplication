@@ -35,11 +35,11 @@ public class Customer {
 	private double onRoadPrice;
 	private int requiredTenure;
 	private String interesType="Compound Interest";
-
+	private String  userType="CUSTOMER";
 	@OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL) 
 	private DependentInformation depInfo;
 	
 	@OneToOne(cascade = CascadeType.ALL)
