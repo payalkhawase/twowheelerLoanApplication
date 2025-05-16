@@ -2,9 +2,14 @@ package in.shriram.dreambiketwowheelerloan.application.model;
 
 
 import java.util.List;
+
+
 import java.util.Set;
 
+
 import jakarta.persistence.CascadeType;
+
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -25,18 +30,21 @@ public class Customer {
 	private String customerDateOfBirth;
 	private int customerAge; 
 	private String customerGender;
-	private String customerMobileNumber;
-	private double customerAdditionalMobileNumber;
-	private double customerAmountPaidForBike;
-	private double customerTotalLoanRequired;
+    private String customerMobileNumber;
+    private double customerAdditionalMobileNumber;
+	//private double customerAmountPaidForHome;
+    private double customerAmountPaidForBike;
+    private double customerTotalLoanRequired;
 	private String customerEmail;
 	private String password;
 	private String loanStatus="Submit";
 	private double onRoadPrice;
 	private int requiredTenure;
+
 	private String interesType="Compound Interest";
 	private String  userType="CUSTOMER";
-	@OneToOne(cascade = CascadeType.ALL)
+
+    @OneToOne(cascade = CascadeType.ALL)
 	private AllPersonalDocuments personalDoc;
 	
 	@OneToOne(cascade = CascadeType.ALL) 
@@ -45,9 +53,10 @@ public class Customer {
 	@OneToOne(cascade = CascadeType.ALL)
 	private CustomerAddress custAddr;
 	
-	@OneToOne(cascade = CascadeType.MERGE ,orphanRemoval = false)
+    @OneToOne(cascade = CascadeType.MERGE ,orphanRemoval = false)
 	@JoinColumn(name = "cibilId")
 	private Cibil cibil;
+
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private AccountDetails acdetails;
@@ -62,7 +71,9 @@ public class Customer {
 	private List<Ledger> led;
 	
 	@OneToOne(cascade = CascadeType.ALL)
+
 	@JoinColumn(name = "sanctionId")
+
 	private SanctionLetter sanctionletter;
 
 	@OneToOne(cascade = CascadeType.ALL)
