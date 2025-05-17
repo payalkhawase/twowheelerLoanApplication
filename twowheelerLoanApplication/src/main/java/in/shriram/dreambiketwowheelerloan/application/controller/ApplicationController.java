@@ -3,6 +3,7 @@ package in.shriram.dreambiketwowheelerloan.application.controller;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,17 +21,21 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidFileTypeException;
 import in.shriram.dreambiketwowheelerloan.application.exception.InvalidUserLoginException;
-
-
 import in.shriram.dreambiketwowheelerloan.application.model.AllPersonalDocuments;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 import in.shriram.dreambiketwowheelerloan.application.model.Enquiry;
 import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
 
+
+
+import jakarta.persistence.Entity;
+
+
+
+@CrossOrigin("*")
 @RestController
 @RequestMapping("/apploan")
 @CrossOrigin("http://localhost:5173")
@@ -55,24 +60,30 @@ public class ApplicationController {
 			@RequestPart ("data") String jsonData, 
 			@RequestPart ("addressProof") MultipartFile addressProof,
 			@RequestPart ("panCard") MultipartFile panCard,
-			@RequestPart ("IncomeTax") MultipartFile IncomeTax,
+
+            //@RequestPart ("IncomeTax") MultipartFile IncomeTax,
+			//@RequestPart ("addharCard") MultipartFile addharCard,
+            @RequestPart ("IncomeTax") MultipartFile IncomeTax,
 			@RequestPart ("addharCard") MultipartFile addharCard,
-			@RequestPart ("photo") MultipartFile photo,
+            @RequestPart ("photo") MultipartFile photo,
 			@RequestPart ("signature") MultipartFile signature,
 			@RequestPart ("bankCheque") MultipartFile bankCheque,
 			@RequestPart ("salarySlips") MultipartFile salarySlips) throws Exception
 			{
 		
 		Enquiry e = rt.getForObject("http://localhost:7777/enq/enquiry/"+CustomerId, Enquiry.class);
-		
 		Customer customer = om.readValue(jsonData, Customer.class);
-		
+		//Set<Customer> customers = (Set<Customer>) om.readValue(jsonData, new TypeReference<Set<Customer>>() {});
+
+
+		//Customer customer = om.readValue(jsonData, Customer.class);
+	    customer.setCibil(e.getCibil());
 		customer.setCustomerName(e.getFirstname()+" "+e.getLastName());
 		customer.setCustomerAge(e.getAge());
 		customer.setCustomerEmail(e.getEmail());
 		customer.setCustomerMobileNumber(e.getMobileNo());
 		customer.setCustomerAdditionalMobileNumber(e.getAlternateMobno());
-		customer.setCibil(e.getCibil());
+		
 		customer.setPassword(e.getPassword());
 		
 		AllPersonalDocuments apdoc = new AllPersonalDocuments();
@@ -87,6 +98,17 @@ public class ApplicationController {
 			}
 		}
 		if(!panCard.isEmpty())
+
+		apdoc.setPanCard(panCard.getBytes());
+
+
+    
+		//if(!IncomeTax.isEmpty())
+		//apdoc.setIncomeTax(IncomeTax.getBytes());
+		//if(!addharCard.isEmpty())
+		//apdoc.setAddharCard(addharCard.getBytes());
+
+
 		{	
 			if (!panCard.getContentType().equals("application/pdf")) {
 	            throw new InvalidFileTypeException("Only PDF files are allowed for Pan Card");
@@ -96,6 +118,7 @@ public class ApplicationController {
 			apdoc.setPanCard(panCard.getBytes());
 			}
 		}
+
 		if(!IncomeTax.isEmpty())
 		{
 			if (!IncomeTax.getContentType().equals("application/pdf")) {
@@ -107,6 +130,10 @@ public class ApplicationController {
 			}
 		}
 		if(!addharCard.isEmpty())
+
+		apdoc.setAddharCard(addharCard.getBytes());
+
+
 		{
 			if (!addharCard.getContentType().equals("application/pdf")) {
 	            throw new InvalidFileTypeException("Only PDF files are allowed for addhar Card");
@@ -118,6 +145,7 @@ public class ApplicationController {
 			}
 		}
 			
+
 		if(!photo.isEmpty())
 		{
 			if (!ALLOWED_IMAGE_TYPES.contains(photo.getContentType())) {
@@ -159,10 +187,7 @@ public class ApplicationController {
 		
 	}
 	
-
-	
-	
-	@PutMapping("/upadtedata")
+   @PutMapping("/upadtedata")
     public ResponseEntity<Customer> updateCustomerInfo(@RequestBody Customer customer){
 		
 		Customer c= asi.updateCustomer(customer);
@@ -177,15 +202,12 @@ public class ApplicationController {
 	}
 
 	@GetMapping("/getAllCustomerDataSubmit")
-	public ResponseEntity<List> getAllCustomerDataSubmit() {
-		List list = asi.getAllCustomerDataSubmit();
-		return new ResponseEntity<List>(list,HttpStatus.OK);
+	public ResponseEntity<List<Customer>> getAllCustomerDataSubmit() {
+		List<Customer> list = asi.getAllCustomerDataSubmit();
+		return new ResponseEntity<List<Customer>>(list,HttpStatus.OK);
 	}
 	
-	
-
-
-   @GetMapping("/getaCustomer/{customerId}")
+	@GetMapping("/getaCustomer/{customerId}")
 
 	    public ResponseEntity<Customer> getcustomer(@PathVariable("customerId") int customerId) {
 		   
@@ -193,13 +215,31 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 	}
 
+    @GetMapping("/getCustomerVerified")
 
-	@GetMapping("/getCustomerVerified/{customerId}")
 
-	    public Customer getCustomerVerified(@PathVariable("customerId") int customerId) {
+	    public List<Customer> getCustomerVerified() {
 		   
-		Customer cu= asi.getCustomerVerified(customerId);
+		List<Customer> cu= asi.getCustomerVerified();
 		return cu;
+	}
+	
+	@GetMapping("/getSingleCustomerVerified/{customerId}")
+
+     public ResponseEntity<Customer> getSingleCustomerVerified(@PathVariable("customerId")int customerId) {
+	   
+	Customer cu= asi.getSingleCustomerVerified(customerId);
+	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
+}
+	
+	
+	
+	@GetMapping("/getSanctionList/{customerId}")
+	public ResponseEntity<List> getSanctionList(@PathVariable("customerId") int customerId)
+	{
+		List list = asi.getSanctionList(customerId);
+		return new ResponseEntity<List>(list,HttpStatus.OK);
+		
 	}
 	
 
@@ -209,11 +249,13 @@ public class ApplicationController {
 			@PathVariable("password") String password){
 		
 			Customer cust=asi.verify(customerEmail,password);
-			if(cust!=null) 
+			if(cust!=null) {
 			return new ResponseEntity<Customer>(cust,HttpStatus.OK);
-			
-			else 
+			}
+			else {
+				
 				throw new InvalidUserLoginException("Sorry, user not found!");
+			}
 			
 	}
 	
@@ -224,7 +266,28 @@ public class ApplicationController {
 		Customer cust=asi.updateLoanStatus(customerId,loanStatus);
 		
 		return new ResponseEntity<Customer>(cust,HttpStatus.OK);
+
 	}
+	
+	@GetMapping("/getSanctionedCustomers")
+	public ResponseEntity<List<Customer>> getSanctionedList()
+	{
+		List<Customer> l = asi.getSanctionedcustomer();
+		return new ResponseEntity<List<Customer>>(l,HttpStatus.OK);
+				
+	}
+	
+//	@GetMapping("/getAllCustomer")
+//	public ResponseEntity<List<Customer>> getAllCustomer()
+//	{
+//	List<Customer> customers=asi.getAllCustomer();
+//	 return new ResponseEntity<>(customers, HttpStatus.OK);
+//	}
+
+	
+
+}
+
 
 	@GetMapping("/getSanctionList/{customerId}")
 	public ResponseEntity<Customer> getSanctionList(@PathVariable("customerId") int customerId)
@@ -233,6 +296,7 @@ public class ApplicationController {
 		return new ResponseEntity<Customer>(list,HttpStatus.OK);
  
 	}
+
 
 	@GetMapping("/getVerifiedCustomers")
 	public ResponseEntity<List> getVerifiedList()
@@ -258,4 +322,3 @@ public class ApplicationController {
 	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 }
 
-}

@@ -1,6 +1,9 @@
 package in.shriram.dreambiketwowheelerloan.application.ServiceImpl;
 
 
+
+import java.io.IOException;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -88,7 +91,7 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 	
 	@Override
-	public List getAllCustomerDataSubmit() {
+	public List<Customer> getAllCustomerDataSubmit() {
 		// TODO Auto-generated method stub
 		return ar.findByLoanStatus("Submit");
 	}
@@ -117,22 +120,20 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 
 	@Override
-	public Customer getCustomerVerified(int customerId) {
-		Customer co = new Customer();
-		co = ar.findById(customerId).get();
+	public List<Customer> getCustomerVerified() {
 		
-		if(co.getLoanStatus().equals("Verified"))
-		{
-			return co;
-		}
 		
-		return null;
-
-		
+		return ar.findByLoanStatus("Verified");
 
 	}
 
 	@Override
+
+	public List getSanctionList(int customerId) {
+		return ar.findAllByCustomerIdAndLoanStatus(customerId,"Sanctioned");
+	}
+
+	
 
 	public Customer verify(String customerEmail, String password) {
 		
@@ -153,12 +154,32 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 	}
 
+	@Override
+	public List<Customer> getAllCustomer() {
+		// TODO Auto-generated method stub
+		return ar.findAll();
+	}
+
+	@Override
+	public Customer getSingleCustomerVerified(int customerId) {
+		
+		return ar.findById(customerId).get();
+	}
+
 	
 
-	public Customer getSanctionList(int customerId) {
-		
-		return  ar.findByCustomerIdAndLoanStatus(customerId,"Sanctioned");
+	@Override
+	public List<Customer> getSanctionedcustomer() {
+		return ar.findByLoanStatus("Sanctioned");
 	}
+
+	
+	
+
+	
+
+
+	
 
 	@Override
 	public List getVerifiedCustomers() {
