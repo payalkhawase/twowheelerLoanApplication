@@ -1,9 +1,6 @@
 package in.shriram.dreambiketwowheelerloan.application.ServiceImpl;
 
 
-
-import java.io.IOException;
-
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +10,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.AccountDetails;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 
 import in.shriram.dreambiketwowheelerloan.application.model.CustomerAddress;
+import in.shriram.dreambiketwowheelerloan.application.model.Ledger;
 import in.shriram.dreambiketwowheelerloan.application.model.LocalAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.PermanentAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
@@ -23,6 +21,11 @@ import in.shriram.dreambiketwowheelerloan.application.repo.DependentInformationR
 import in.shriram.dreambiketwowheelerloan.application.repo.LocalAddressRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.PermanentAddressRepo;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationServiceI{
@@ -91,7 +94,7 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 	
 	@Override
-	public List<Customer> getAllCustomerDataSubmit() {
+	public List getAllCustomerDataSubmit() {
 		// TODO Auto-generated method stub
 		return ar.findByLoanStatus("Submit");
 	}
@@ -120,20 +123,22 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 	}
 
 	@Override
-	public List<Customer> getCustomerVerified() {
+	public Customer getCustomerVerified(int customerId) {
+		Customer co = new Customer();
+		co = ar.findById(customerId).get();
 		
+		if(co.getLoanStatus().equals("Verified"))
+		{
+			return co;
+		}
 		
-		return ar.findByLoanStatus("Verified");
+		return null;
+
+		
 
 	}
 
 	@Override
-
-	public List getSanctionList(int customerId) {
-		return ar.findAllByCustomerIdAndLoanStatus(customerId,"Sanctioned");
-	}
-
-	
 
 	public Customer verify(String customerEmail, String password) {
 		
@@ -154,32 +159,12 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		
 	}
 
-	@Override
-	public List<Customer> getAllCustomer() {
-		// TODO Auto-generated method stub
-		return ar.findAll();
-	}
+	
 
-	@Override
-	public Customer getSingleCustomerVerified(int customerId) {
+	public Customer getSanctionList(int customerId) {
 		
-		return ar.findById(customerId).get();
+		return  ar.findByCustomerIdAndLoanStatus(customerId,"Sanctioned");
 	}
-
-	
-
-	@Override
-	public List<Customer> getSanctionedcustomer() {
-		return ar.findByLoanStatus("Sanctioned");
-	}
-
-	
-	
-
-	
-
-
-	
 
 	@Override
 	public List getVerifiedCustomers() {
@@ -198,6 +183,21 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		// TODO Auto-generated method stub
 		return ar.findByLoanStatus("Sanctioned");
 	}
+
+	@Override
+	public List getDisburstCustomersList() {
+		// TODO Auto-generated method stub
+		return ar.findByLoanStatus("Disbursed");
+	}
+
+	
+//	
+//	@Override
+//	public List<Customer> getLedgerCustomersList() {
+//		// TODO Auto-generated method stub
+//		
+//		return ar.findByLedLoanStatus("Disbursed");
+//	}
 
 
 	
