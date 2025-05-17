@@ -10,6 +10,7 @@ import in.shriram.dreambiketwowheelerloan.application.model.AccountDetails;
 import in.shriram.dreambiketwowheelerloan.application.model.Customer;
 
 import in.shriram.dreambiketwowheelerloan.application.model.CustomerAddress;
+import in.shriram.dreambiketwowheelerloan.application.model.Ledger;
 import in.shriram.dreambiketwowheelerloan.application.model.LocalAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.PermanentAddress;
 import in.shriram.dreambiketwowheelerloan.application.model.SanctionLetter;
@@ -20,6 +21,11 @@ import in.shriram.dreambiketwowheelerloan.application.repo.DependentInformationR
 import in.shriram.dreambiketwowheelerloan.application.repo.LocalAddressRepo;
 import in.shriram.dreambiketwowheelerloan.application.repo.PermanentAddressRepo;
 import in.shriram.dreambiketwowheelerloan.application.servicei.ApplicationServiceI;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Service
 public class ApplicationServiceImpl implements ApplicationServiceI{
@@ -177,6 +183,21 @@ public class ApplicationServiceImpl implements ApplicationServiceI{
 		// TODO Auto-generated method stub
 		return ar.findByLoanStatus("Sanctioned");
 	}
+
+	@Override
+	public List getDisburstCustomersList() {
+		// TODO Auto-generated method stub
+		return ar.findByLoanStatus("Disbursed");
+	}
+
+	
+//	
+//	@Override
+//	public List<Customer> getLedgerCustomersList() {
+//		// TODO Auto-generated method stub
+//		
+//		return ar.findByLedLoanStatus("Disbursed");
+//	}
 
 
 	

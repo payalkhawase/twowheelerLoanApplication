@@ -38,6 +38,10 @@ public interface ApplicationServiceI {
 
 	public List getSanctionedList();
 
+	public List getDisburstCustomersList();
+
+//	public List getLedgerCustomersList();
+
 
 	
 

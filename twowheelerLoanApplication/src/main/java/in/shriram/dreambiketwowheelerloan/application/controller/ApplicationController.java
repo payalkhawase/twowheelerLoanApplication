@@ -257,5 +257,20 @@ public class ApplicationController {
 	Customer cu= asi.getSingleCustomerVerified(customerId);
 	return new ResponseEntity<Customer>(cu,HttpStatus.OK);
 }
+	
+	@GetMapping("/getDisburstCustomers")
+	public ResponseEntity<List> getDisburstCustomersList()
+	{
+		List l = asi.getDisburstCustomersList();
+		return new ResponseEntity<List>(l,HttpStatus.OK);
+		
+	}
 
+//	@GetMapping("/getLedgerCustomers")
+//	public ResponseEntity<List<Customer>> getLedgerCustomersList()
+//	{
+//		List<Customer> l = asi.getLedgerCustomersList();
+//		return new ResponseEntity<List<Customer>>(l,HttpStatus.OK);
+//		
+//	}
 }
